@@ -18,3 +18,9 @@ spring:
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+# ── T1-04: Configuration Properties exercises ──────────────────────
+app:
+  name: SpringForge
+  version: 1.0.0
+  debug: false
