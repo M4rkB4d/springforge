@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springforge
+
+  # H2 in-memory database for exercises
+  datasource:
+    url: jdbc:h2:mem:springforge
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+  # Disable security auto-config by default (modules enable as needed)
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
