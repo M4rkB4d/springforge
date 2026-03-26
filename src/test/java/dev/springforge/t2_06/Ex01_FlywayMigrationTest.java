@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running (uses Testcontainers for PostgreSQL)
  */
-@SpringBootTest
+@SpringBootTest(properties = "spring.flyway.enabled=true")
 @Import(TestcontainersConfig.class)
 @DisplayName("T2-06 Ex01: Flyway Migrations")
 class Ex01_FlywayMigrationTest {

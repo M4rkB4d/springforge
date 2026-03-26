@@ -51,8 +51,10 @@ echo "  SpringForge Progress: ${MODULE_ID^^} ${MODULE_TITLE}"
 echo "  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-# Run tests and capture output
-TEST_OUTPUT=$(./mvnw test -Dtest="dev/springforge/${PACKAGE_NAME}/**" -pl . --no-transfer-progress 2>&1 || true)
+# Run tests and capture output to temp file (avoids large-output pipe issues)
+TEST_OUTPUT_FILE=$(mktemp)
+trap "rm -f $TEST_OUTPUT_FILE" EXIT
+./mvnw test -Dtest="dev/springforge/${PACKAGE_NAME}/**" -pl . --no-transfer-progress > "$TEST_OUTPUT_FILE" 2>&1 || true
 
 # Parse test results per test class
 TOTAL_PASS=0
@@ -74,18 +76,18 @@ for test_file in "src/test/java/dev/springforge/${PACKAGE_NAME}"/Ex*.java; do
     TEST_COUNT=$(grep -c '@Test' "$test_file" 2>/dev/null || echo "0")
 
     # Check if this class appears in error/failure output (Maven uses class name in detail lines)
-    if echo "$TEST_OUTPUT" | grep -q "${CLASS_NAME}.*ERROR\!\|${CLASS_NAME}.*FAILURE\!"; then
+    if grep -qE "${CLASS_NAME}.*(ERROR|FAILURE)!" "$TEST_OUTPUT_FILE"; then
         # Tests ran but had errors or failures
-        ERROR_COUNT=$(echo "$TEST_OUTPUT" | grep -c "${CLASS_NAME}\..*<<<" || echo "0")
+        ERROR_COUNT=$(grep -c "${CLASS_NAME}\..*<<<" "$TEST_OUTPUT_FILE" || echo "0")
         PASS_COUNT=$((TEST_COUNT - ERROR_COUNT))
         if [ "$PASS_COUNT" -lt 0 ]; then PASS_COUNT=0; fi
         STATUS="FAIL"
         TOTAL_FAIL=$((TOTAL_FAIL + 1))
-    elif echo "$TEST_OUTPUT" | grep -qi "compilation failure\|cannot find symbol\|does not exist"; then
+    elif grep -qi "compilation failure\|cannot find symbol\|does not exist" "$TEST_OUTPUT_FILE"; then
         STATUS="SKIP"
         PASS_COUNT=0
         TOTAL_SKIP=$((TOTAL_SKIP + 1))
-    elif echo "$TEST_OUTPUT" | grep -q "BUILD SUCCESS"; then
+    elif grep -q "BUILD SUCCESS" "$TEST_OUTPUT_FILE"; then
         # If build succeeded and no errors for this class, it passed
         PASS_COUNT=$TEST_COUNT
         STATUS="PASS"

@@ -8,23 +8,26 @@ import java.time.LocalDateTime;
  * Exercise 3: Entity Relationships
  *
  * YOUR TASKS:
- * 1. Add @Entity and @Table(name = "orders")
- * 2. Add @Id and @GeneratedValue(strategy = GenerationType.IDENTITY) to id
- * 3. Add a @ManyToOne relationship to Customer:
+ * 1. Add @Table(name = "orders")
+ * 2. Add @ManyToOne relationship to Customer:
  *    - @ManyToOne(fetch = FetchType.LAZY)
  *    - @JoinColumn(name = "customer_id", nullable = false)
- * 4. The rest of the fields are basic columns
+ *
+ * The @Entity, @Id, and @GeneratedValue are already set up.
+ * Your job: add the relationship mapping between Order and Customer.
  *
  * This teaches: entity relationships, fetch types, and join columns.
  */
-// TODO: Add @Entity
+@Entity
 // TODO: Add @Table(name = "orders")
 public class Order {
 
-    // TODO: Add @Id and @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Add @ManyToOne(fetch = FetchType.LAZY) and @JoinColumn
+    @ManyToOne(fetch = FetchType.LAZY)
+    // TODO: Add @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     private String description;
