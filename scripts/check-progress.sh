@@ -52,7 +52,7 @@ echo "  ━━━━━━━━━━━━━━━━━━━━━━━━
 echo ""
 
 # Run tests and capture output
-TEST_OUTPUT=$(./mvnw test -Dtest="dev.springforge.${PACKAGE_NAME}.*" -pl . --no-transfer-progress 2>&1 || true)
+TEST_OUTPUT=$(./mvnw test -Dtest="dev/springforge/${PACKAGE_NAME}/**" -pl . --no-transfer-progress 2>&1 || true)
 
 # Parse test results per test class
 TOTAL_PASS=0
@@ -61,7 +61,7 @@ TOTAL_SKIP=0
 TOTAL_EXERCISES=0
 
 # Find all test files for this module
-for test_file in "${EXERCISE_DIR}src/test/java/dev/springforge/${PACKAGE_NAME}"/Ex*.java; do
+for test_file in "src/test/java/dev/springforge/${PACKAGE_NAME}"/Ex*.java; do
     if [ ! -f "$test_file" ]; then
         continue
     fi
@@ -73,22 +73,23 @@ for test_file in "${EXERCISE_DIR}src/test/java/dev/springforge/${PACKAGE_NAME}"/
     # Count tests in this class
     TEST_COUNT=$(grep -c '@Test' "$test_file" 2>/dev/null || echo "0")
 
-    # Check if all tests passed for this class
-    if echo "$TEST_OUTPUT" | grep -q "${CLASS_NAME} -- Time elapsed.*FAILURE"; then
-        # Some tests failed
-        FAIL_COUNT=$(echo "$TEST_OUTPUT" | grep -A1 "${CLASS_NAME}" | grep -oP 'Failures: \K[0-9]+' || echo "0")
-        PASS_COUNT=$((TEST_COUNT - FAIL_COUNT))
+    # Check if this class appears in error/failure output (Maven uses class name in detail lines)
+    if echo "$TEST_OUTPUT" | grep -q "${CLASS_NAME}.*ERROR\!\|${CLASS_NAME}.*FAILURE\!"; then
+        # Tests ran but had errors or failures
+        ERROR_COUNT=$(echo "$TEST_OUTPUT" | grep -c "${CLASS_NAME}\..*<<<" || echo "0")
+        PASS_COUNT=$((TEST_COUNT - ERROR_COUNT))
+        if [ "$PASS_COUNT" -lt 0 ]; then PASS_COUNT=0; fi
         STATUS="FAIL"
         TOTAL_FAIL=$((TOTAL_FAIL + 1))
-    elif echo "$TEST_OUTPUT" | grep -q "${CLASS_NAME}.*Tests run: [0-9]"; then
-        # Tests ran
-        PASS_COUNT=$TEST_COUNT
-        STATUS="PASS"
-        TOTAL_PASS=$((TOTAL_PASS + 1))
     elif echo "$TEST_OUTPUT" | grep -qi "compilation failure\|cannot find symbol\|does not exist"; then
         STATUS="SKIP"
         PASS_COUNT=0
         TOTAL_SKIP=$((TOTAL_SKIP + 1))
+    elif echo "$TEST_OUTPUT" | grep -q "BUILD SUCCESS"; then
+        # If build succeeded and no errors for this class, it passed
+        PASS_COUNT=$TEST_COUNT
+        STATUS="PASS"
+        TOTAL_PASS=$((TOTAL_PASS + 1))
     else
         STATUS="SKIP"
         PASS_COUNT=0

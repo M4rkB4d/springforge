@@ -28,7 +28,7 @@ git checkout exercise/t1-02
 cat exercises/t1-02-first-app/README.md
 
 # Run the tests (they will FAIL — that's the point)
-./mvnw test -Dtest="dev.springforge.t1_02.*"
+./mvnw test -Dtest="dev/springforge/t1_02/**"
 
 # Or use the progress checker
 ./scripts/check-progress.sh t1-02

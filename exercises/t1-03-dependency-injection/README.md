@@ -41,7 +41,7 @@ profiles let you configure without changing code.
 ## Run All T1-03 Tests
 
 ```bash
-./mvnw test -pl . -Dtest="dev.springforge.t1_03.*"
+./mvnw test -pl . -Dtest="dev/springforge/t1_03/**"
 ```
 
 ## Key Concepts

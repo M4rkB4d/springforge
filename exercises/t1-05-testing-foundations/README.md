@@ -42,7 +42,7 @@ JSON responses, verify status codes. This is how you test controllers.
 ## Run All T1-05 Tests
 
 ```bash
-./mvnw test -pl . -Dtest="dev.springforge.t1_05.*"
+./mvnw test -pl . -Dtest="dev/springforge/t1_05/**"
 ```
 
 ## Key Concepts

@@ -42,7 +42,7 @@ repositories. You'll build both.
 ## Run All T1-01 Tests
 
 ```bash
-./mvnw test -pl . -Dtest="dev.springforge.t1_01.*"
+./mvnw test -pl . -Dtest="dev/springforge/t1_01/**"
 ```
 
 ## Key Concepts

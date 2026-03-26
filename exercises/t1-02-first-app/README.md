@@ -13,7 +13,7 @@ Build your first Spring Boot application with a REST endpoint that returns a gre
 
 ```bash
 # Run the tests for this module
-./mvnw test -Dtest="dev.springforge.t1_02.*"
+./mvnw test -Dtest="dev/springforge/t1_02/**"
 
 # Or use the progress script
 ./scripts/check-progress.sh t1-02

@@ -43,7 +43,7 @@ it disappears when disabled.
 ## Run All T1-04 Tests
 
 ```bash
-./mvnw test -pl . -Dtest="dev.springforge.t1_04.*"
+./mvnw test -pl . -Dtest="dev/springforge/t1_04/**"
 ```
 
 ## Key Concepts
