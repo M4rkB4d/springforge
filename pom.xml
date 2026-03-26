@@ -96,6 +96,18 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- T3-03: Mongock for MongoDB migrations -->
+        <dependency>
+            <groupId>io.mongock</groupId>
+            <artifactId>mongock-springboot-v3</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.mongock</groupId>
+            <artifactId>mongodb-springdata-v4-driver</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
