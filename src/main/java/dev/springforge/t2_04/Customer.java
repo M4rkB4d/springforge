@@ -6,20 +6,22 @@ import jakarta.persistence.*;
  * Exercise 1: JPA Entity
  *
  * YOUR TASKS:
- * 1. Add @Entity annotation to the class
- * 2. Add @Table(name = "customers") annotation
- * 3. Add @Id and @GeneratedValue(strategy = GenerationType.IDENTITY) to the id field
- * 4. Add @Column(nullable = false) to name
- * 5. Add @Column(unique = true, nullable = false) to email
+ * 1. Add @Table(name = "customers") annotation
+ * 2. Add @Column(nullable = false) to name
+ * 3. Add @Column(unique = true, nullable = false) to email
+ *
+ * The @Entity, @Id, and @GeneratedValue are already set up.
+ * Your job: add column constraints that enforce data integrity.
  *
  * Note: This is a class, not a record — JPA entities need mutable state
  * and a no-arg constructor.
  */
-// TODO: Add @Entity
+@Entity
 // TODO: Add @Table(name = "customers")
 public class Customer {
 
-    // TODO: Add @Id and @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // TODO: Add @Column(nullable = false)
