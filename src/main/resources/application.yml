@@ -14,6 +14,10 @@ spring:
       ddl-auto: create-drop
     show-sql: false
 
+  # Disable Flyway for H2 (enable in Testcontainers tests only)
+  flyway:
+    enabled: false
+
   # Disable security auto-config by default (modules enable as needed)
   autoconfigure:
     exclude:
