@@ -9,6 +9,7 @@ package dev.springforge.t1_03;
  * 3. Implement greet() to return "Good day, {name}. How may I assist you?"
  *
  * When the "formal" profile is active, THIS bean replaces SimpleGreetingService.
+ * (SimpleGreetingService needs @Profile("default") to avoid both beans being active.)
  */
 // TODO: Add @Service and @Profile("formal") annotations
 public class FormalGreetingService implements GreetingService {
