@@ -24,6 +24,6 @@ class Ex02_ValueInjectionEnabledTest {
     @Test
     @DisplayName("FeatureToggle should read true when property is set")
     void propertyOverridesDefault() {
-        assertThat(featureToggle.isBetaEnabled()).isTrue();
+        assertThat(featureToggle.isBetaEnabled()).as("beta should be true when property is set").isTrue();
     }
 }

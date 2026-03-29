@@ -49,6 +49,6 @@ class Ex01_ProfileConfigTest {
     void environmentInjected() {
         ProfileConfig.DevConfig devConfig =
                 context.getBean(ProfileConfig.DevConfig.class);
-        assertThat(devConfig.getEnvironment()).isEqualTo("development");
+        assertThat(devConfig.getEnvironment()).as("environment should be 'development'").isEqualTo("development");
     }
 }

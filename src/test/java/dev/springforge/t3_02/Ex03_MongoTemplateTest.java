@@ -72,8 +72,8 @@ class Ex03_MongoTemplateTest {
         );
 
         List<Product> results = mongoTemplate.find(query, Product.class);
-        assertThat(results).hasSize(1);
-        assertThat(results.getFirst().getName()).isEqualTo("Phone");
+        assertThat(results).as("criteria query should find 1 match").hasSize(1);
+        assertThat(results.getFirst().getName()).as("matching product should be Phone").isEqualTo("Phone");
     }
 
     @Test
@@ -87,7 +87,7 @@ class Ex03_MongoTemplateTest {
         mongoTemplate.updateFirst(query, update, Product.class);
 
         Product updated = mongoTemplate.findOne(query, Product.class);
-        assertThat(updated.getPrice()).isEqualByComparingTo(new BigDecimal("899.99"));
+        assertThat(updated.getPrice()).as("price should reflect partial update").isEqualByComparingTo(new BigDecimal("899.99"));
     }
 
     @Test
@@ -99,8 +99,8 @@ class Ex03_MongoTemplateTest {
         mongoTemplate.updateFirst(query, update, Product.class);
 
         Product updated = mongoTemplate.findOne(query, Product.class);
-        assertThat(updated.getReviews()).hasSize(1);
-        assertThat(updated.getReviews().getFirst().getAuthor()).isEqualTo("Dave");
+        assertThat(updated.getReviews()).as("review should be pushed into array").hasSize(1);
+        assertThat(updated.getReviews().getFirst().getAuthor()).as("pushed review author should be Dave").isEqualTo("Dave");
     }
 
     @Test
@@ -114,9 +114,9 @@ class Ex03_MongoTemplateTest {
         AggregationResults<Map> results = mongoTemplate.aggregate(agg, "products", Map.class);
         List<Map> mappedResults = results.getMappedResults();
 
-        assertThat(mappedResults).hasSizeGreaterThanOrEqualTo(2);
+        assertThat(mappedResults).as("aggregation should return 2+ groups").hasSizeGreaterThanOrEqualTo(2);
         // Electronics should have the most (3 products)
-        assertThat(mappedResults.getFirst().get("_id")).isEqualTo("Electronics");
-        assertThat(((Number) mappedResults.getFirst().get("count")).intValue()).isEqualTo(3);
+        assertThat(mappedResults.getFirst().get("_id")).as("top category should be Electronics").isEqualTo("Electronics");
+        assertThat(((Number) mappedResults.getFirst().get("count")).intValue()).as("Electronics should have 3 products").isEqualTo(3);
     }
 }

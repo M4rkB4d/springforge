@@ -44,8 +44,9 @@ class Ex01_DualStoreSetupTest {
     @DisplayName("SQL Server connection is active")
     void sqlServerIsConnected() throws Exception {
         try (Connection conn = dataSource.getConnection()) {
-            assertThat(conn.isValid(5)).isTrue();
+            assertThat(conn.isValid(5)).as("SQL Server connection should be valid").isTrue();
             assertThat(conn.getMetaData().getDatabaseProductName())
+                    .as("database should be Microsoft SQL Server")
                     .containsIgnoringCase("Microsoft SQL Server");
         }
     }
@@ -54,7 +55,7 @@ class Ex01_DualStoreSetupTest {
     @DisplayName("MongoDB connection is active")
     void mongoIsConnected() {
         // MongoTemplate can list collections — proves connection works
-        assertThat(mongoTemplate.getDb().getName()).isNotEmpty();
+        assertThat(mongoTemplate.getDb().getName()).as("MongoDB database name should exist").isNotEmpty();
     }
 
     @Test
@@ -63,8 +64,8 @@ class Ex01_DualStoreSetupTest {
         Account account = new Account("jdoe", "jdoe@springforge.dev", "DEVELOPER");
         Account saved = accountRepository.save(account);
 
-        assertThat(saved.getId()).isNotNull();
-        assertThat(accountRepository.findByUsername("jdoe")).isPresent();
+        assertThat(saved.getId()).as("saved account should have a generated ID").isNotNull();
+        assertThat(accountRepository.findByUsername("jdoe")).as("account should be findable by username").isPresent();
     }
 
     @Test
@@ -73,7 +74,7 @@ class Ex01_DualStoreSetupTest {
         AuditLog log = new AuditLog(1L, "LOGIN", "User logged in");
         AuditLog saved = mongoTemplate.save(log);
 
-        assertThat(saved.getId()).isNotNull();
-        assertThat(mongoTemplate.findAll(AuditLog.class)).isNotEmpty();
+        assertThat(saved.getId()).as("saved audit log should have a generated ID").isNotNull();
+        assertThat(mongoTemplate.findAll(AuditLog.class)).as("audit logs should exist in MongoDB").isNotEmpty();
     }
 }

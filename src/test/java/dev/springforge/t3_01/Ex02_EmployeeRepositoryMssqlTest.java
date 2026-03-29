@@ -52,12 +52,12 @@ class Ex02_EmployeeRepositoryMssqlTest {
         emp.setHireDate(LocalDate.of(2024, 1, 15));
 
         Employee saved = repository.save(emp);
-        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getId()).as("saved employee should have a generated ID").isNotNull();
 
         Optional<Employee> found = repository.findById(saved.getId());
-        assertThat(found).isPresent();
-        assertThat(found.get().getFirstName()).isEqualTo("Alice");
-        assertThat(found.get().getSalary()).isEqualByComparingTo(new BigDecimal("95000.00"));
+        assertThat(found).as("employee should be found by ID").isPresent();
+        assertThat(found.get().getFirstName()).as("first name should match saved value").isEqualTo("Alice");
+        assertThat(found.get().getSalary()).as("salary should match saved value").isEqualByComparingTo(new BigDecimal("95000.00"));
     }
 
     @Test
@@ -67,8 +67,8 @@ class Ex02_EmployeeRepositoryMssqlTest {
         repository.save(emp);
 
         Optional<Employee> found = repository.findByEmail("bob@springforge.dev");
-        assertThat(found).isPresent();
-        assertThat(found.get().getLastName()).isEqualTo("Jones");
+        assertThat(found).as("employee should be found by email").isPresent();
+        assertThat(found.get().getLastName()).as("last name should match saved value").isEqualTo("Jones");
     }
 
     @Test
@@ -84,7 +84,7 @@ class Ex02_EmployeeRepositoryMssqlTest {
         repository.saveAll(List.of(e1, e2, e3));
 
         List<Employee> engineers = repository.findByDepartment("Engineering");
-        assertThat(engineers).hasSize(2);
+        assertThat(engineers).as("should find 2 Engineering employees").hasSize(2);
     }
 
     @Test
@@ -105,7 +105,7 @@ class Ex02_EmployeeRepositoryMssqlTest {
         repository.saveAll(List.of(e1, e2, e3));
 
         List<Employee> result = repository.findActiveWithMinSalary(new BigDecimal("100000.00"));
-        assertThat(result).hasSize(1);
-        assertThat(result.getFirst().getFirstName()).isEqualTo("Alice");
+        assertThat(result).as("only 1 active employee above min salary").hasSize(1);
+        assertThat(result.getFirst().getFirstName()).as("Alice is the matching employee").isEqualTo("Alice");
     }
 }

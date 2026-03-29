@@ -69,28 +69,28 @@ class Ex02_MongoRepositoryTest {
     @DisplayName("Should find products by category")
     void shouldFindByCategory() {
         List<Product> electronics = repository.findByCategory("Electronics");
-        assertThat(electronics).hasSize(3);
+        assertThat(electronics).as("should find 3 Electronics products").hasSize(3);
     }
 
     @Test
     @DisplayName("Should find only available products")
     void shouldFindAvailable() {
         List<Product> available = repository.findByAvailableTrue();
-        assertThat(available).hasSize(3);
+        assertThat(available).as("should find 3 available products").hasSize(3);
     }
 
     @Test
     @DisplayName("Should find products under a price")
     void shouldFindByPriceLessThan() {
         List<Product> cheap = repository.findByPriceLessThan(new BigDecimal("300.00"));
-        assertThat(cheap).hasSize(2); // Book (29.99) and Old Phone (199.99)
+        assertThat(cheap).as("should find 2 products under $300").hasSize(2); // Book (29.99) and Old Phone (199.99)
     }
 
     @Test
     @DisplayName("Should find products by tag")
     void shouldFindByTag() {
         List<Product> techProducts = repository.findByTagsContaining("tech");
-        assertThat(techProducts).hasSize(3); // Laptop, Phone, Old Phone
+        assertThat(techProducts).as("should find 3 products tagged 'tech'").hasSize(3); // Laptop, Phone, Old Phone
     }
 
     @Test
@@ -98,7 +98,7 @@ class Ex02_MongoRepositoryTest {
     void shouldFindWithCustomQuery() {
         List<Product> result = repository.findAvailableInCategoryUnderPrice(
                 "Electronics", new BigDecimal("700.00"));
-        assertThat(result).hasSize(1);
-        assertThat(result.getFirst().getName()).isEqualTo("Phone");
+        assertThat(result).as("custom query should find 1 match").hasSize(1);
+        assertThat(result.getFirst().getName()).as("matching product should be Phone").isEqualTo("Phone");
     }
 }

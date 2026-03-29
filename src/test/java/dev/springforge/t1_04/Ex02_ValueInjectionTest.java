@@ -28,6 +28,6 @@ class Ex02_ValueInjectionTest {
     @Test
     @DisplayName("FeatureToggle should use default value (false) when property not set")
     void defaultValueUsed() {
-        assertThat(featureToggle.isBetaEnabled()).isFalse();
+        assertThat(featureToggle.isBetaEnabled()).as("beta should default to false when unset").isFalse();
     }
 }

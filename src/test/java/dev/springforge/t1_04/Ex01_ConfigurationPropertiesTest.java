@@ -31,18 +31,18 @@ class Ex01_ConfigurationPropertiesTest {
     @Test
     @DisplayName("AppConfig should bind app.name from YAML")
     void appNameBound() {
-        assertThat(appConfig.name()).isEqualTo("SpringForge");
+        assertThat(appConfig.name()).as("app.name should bind from YAML").isEqualTo("SpringForge");
     }
 
     @Test
     @DisplayName("AppConfig should bind app.version from YAML")
     void appVersionBound() {
-        assertThat(appConfig.version()).isEqualTo("1.0.0");
+        assertThat(appConfig.version()).as("app.version should bind from YAML").isEqualTo("1.0.0");
     }
 
     @Test
     @DisplayName("AppConfig should bind app.debug from YAML")
     void appDebugBound() {
-        assertThat(appConfig.debug()).isFalse();
+        assertThat(appConfig.debug()).as("app.debug should bind from YAML").isFalse();
     }
 }

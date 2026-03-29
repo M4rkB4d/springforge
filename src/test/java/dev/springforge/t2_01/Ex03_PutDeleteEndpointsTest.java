@@ -94,7 +94,7 @@ class Ex03_PutDeleteEndpointsTest {
         mockMvc.perform(delete("/api/products/" + existingProduct.id()))
                 .andExpect(status().isNoContent());
 
-        assertThat(repository.findById(existingProduct.id())).isEmpty();
+        assertThat(repository.findById(existingProduct.id())).as("deleted product should not exist in repo").isEmpty();
     }
 
     @Test

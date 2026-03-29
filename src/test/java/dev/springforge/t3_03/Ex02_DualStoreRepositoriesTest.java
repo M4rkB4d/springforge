@@ -53,17 +53,18 @@ class Ex02_DualStoreRepositoriesTest {
                 new AuditLog(account.getId(), "ACCOUNT_CREATED", "Admin account created"));
 
         // Verify JPA store
-        assertThat(accountRepository.count()).isEqualTo(1);
-        assertThat(accountRepository.findByUsername("admin")).isPresent();
+        assertThat(accountRepository.count()).as("JPA store should have 1 account").isEqualTo(1);
+        assertThat(accountRepository.findByUsername("admin")).as("admin account should be findable").isPresent();
 
         // Verify MongoDB store
-        assertThat(auditLogRepository.count()).isEqualTo(1);
+        assertThat(auditLogRepository.count()).as("Mongo store should have 1 audit log").isEqualTo(1);
         assertThat(auditLogRepository.findByAccountId(account.getId()))
+                .as("should find audit log for account")
                 .hasSize(1)
                 .first()
                 .satisfies(entry -> {
-                    assertThat(entry.getAction()).isEqualTo("ACCOUNT_CREATED");
-                    assertThat(entry.getTimestamp()).isNotNull();
+                    assertThat(entry.getAction()).as("action should be ACCOUNT_CREATED").isEqualTo("ACCOUNT_CREATED");
+                    assertThat(entry.getTimestamp()).as("timestamp should be auto-set").isNotNull();
                 });
     }
 
@@ -75,10 +76,10 @@ class Ex02_DualStoreRepositoriesTest {
         auditLogRepository.save(new AuditLog(1L, "LOGOUT", "User 1 logout"));
 
         List<AuditLog> logins = auditLogRepository.findByAction("LOGIN");
-        assertThat(logins).hasSize(2);
+        assertThat(logins).as("should find 2 LOGIN entries").hasSize(2);
 
         List<AuditLog> logouts = auditLogRepository.findByAction("LOGOUT");
-        assertThat(logouts).hasSize(1);
+        assertThat(logouts).as("should find 1 LOGOUT entry").hasSize(1);
     }
 
     @Test
@@ -99,8 +100,9 @@ class Ex02_DualStoreRepositoriesTest {
         Account foundAlice = accountRepository.findByUsername("alice").orElseThrow();
         List<AuditLog> aliceLogs = auditLogRepository.findByAccountId(foundAlice.getId());
 
-        assertThat(aliceLogs).hasSize(2);
+        assertThat(aliceLogs).as("Alice should have 2 audit logs").hasSize(2);
         assertThat(aliceLogs).extracting(AuditLog::getAction)
+                .as("Alice's actions should be LOGIN and UPDATE_PROFILE")
                 .containsExactlyInAnyOrder("LOGIN", "UPDATE_PROFILE");
     }
 }

@@ -54,12 +54,13 @@ class Ex03_MongockMigrationTest {
         List<AuditLog> results = mongoTemplate.find(query, AuditLog.class);
 
         assertThat(results)
+                .as("should find 1 SYSTEM_INIT audit log")
                 .hasSize(1)
                 .first()
                 .satisfies(log -> {
-                    assertThat(log.getAccountId()).isEqualTo(1L);
-                    assertThat(log.getAction()).isEqualTo("SYSTEM_INIT");
-                    assertThat(log.getDetails()).contains("Mongock migration");
+                    assertThat(log.getAccountId()).as("accountId should be 1").isEqualTo(1L);
+                    assertThat(log.getAction()).as("action should be SYSTEM_INIT").isEqualTo("SYSTEM_INIT");
+                    assertThat(log.getDetails()).as("details should mention Mongock").contains("Mongock migration");
                 });
     }
 

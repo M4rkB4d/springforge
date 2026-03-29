@@ -31,12 +31,13 @@ class Ex02_PasswordlessConnectionTest {
     @DisplayName("Authentication method is ActiveDirectoryDefault")
     void correctAuthMethod() {
         assertThat(config.getAuthenticationMethod())
+                .as("auth method should be ActiveDirectoryDefault")
                 .isEqualTo("ActiveDirectoryDefault");
     }
 
     @Test
     @DisplayName("Managed Identity does not require username/password")
     void noCredentialsRequired() {
-        assertThat(config.requiresCredentials()).isFalse();
+        assertThat(config.requiresCredentials()).as("managed identity needs no credentials").isFalse();
     }
 }

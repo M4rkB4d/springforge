@@ -43,11 +43,11 @@ class Ex01_MongoDocumentTest {
         product.setDescription("Complete guide to Spring Boot 4.0");
 
         Product saved = mongoTemplate.save(product);
-        assertThat(saved.getId()).isNotNull();
+        assertThat(saved.getId()).as("saved product should have a generated ID").isNotNull();
 
         Product found = mongoTemplate.findById(saved.getId(), Product.class);
-        assertThat(found).isNotNull();
-        assertThat(found.getName()).isEqualTo("Spring Boot Guide");
+        assertThat(found).as("product should be retrievable by ID").isNotNull();
+        assertThat(found.getName()).as("name should match saved value").isEqualTo("Spring Boot Guide");
     }
 
     @Test
@@ -60,8 +60,8 @@ class Ex01_MongoDocumentTest {
         Product saved = mongoTemplate.save(product);
         Product found = mongoTemplate.findById(saved.getId(), Product.class);
 
-        assertThat(found.getReviews()).hasSize(2);
-        assertThat(found.getReviews().getFirst().getAuthor()).isEqualTo("Alice");
+        assertThat(found.getReviews()).as("both reviews should be embedded").hasSize(2);
+        assertThat(found.getReviews().getFirst().getAuthor()).as("first review author should be Alice").isEqualTo("Alice");
     }
 
     @Test
@@ -75,7 +75,7 @@ class Ex01_MongoDocumentTest {
                 .isTrue();
 
         long count = mongoTemplate.getCollection("products").countDocuments();
-        assertThat(count).isEqualTo(1);
+        assertThat(count).as("products collection should have 1 doc").isEqualTo(1);
     }
 
     @Test
@@ -87,7 +87,7 @@ class Ex01_MongoDocumentTest {
 
         // Query using the BSON field name (not Java field name)
         var doc = mongoTemplate.getCollection("products").find().first();
-        assertThat(doc).isNotNull();
+        assertThat(doc).as("BSON document should exist").isNotNull();
         assertThat(doc.containsKey("product_name"))
                 .as("name field should be stored as 'product_name' via @Field")
                 .isTrue();

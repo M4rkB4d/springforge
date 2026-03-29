@@ -23,7 +23,7 @@ class Ex01_HealthIndicatorTest {
         HealthConfig healthConfig = new HealthConfig();
         Health health = healthConfig.health();
 
-        assertThat(health.getStatus()).isEqualTo(Status.UP);
+        assertThat(health.getStatus()).as("health status should be UP").isEqualTo(Status.UP);
     }
 
     @Test
@@ -32,8 +32,8 @@ class Ex01_HealthIndicatorTest {
         HealthConfig healthConfig = new HealthConfig();
         Health health = healthConfig.health();
 
-        assertThat(health.getDetails()).containsKey("database");
-        assertThat(health.getDetails().get("database")).isEqualTo("connected");
+        assertThat(health.getDetails()).as("details should include database key").containsKey("database");
+        assertThat(health.getDetails().get("database")).as("database detail should be 'connected'").isEqualTo("connected");
     }
 
     @Test
@@ -42,6 +42,6 @@ class Ex01_HealthIndicatorTest {
         HealthConfig healthConfig = new HealthConfig();
         Health health = healthConfig.health();
 
-        assertThat(health.getDetails()).containsKey("service");
+        assertThat(health.getDetails()).as("details should include service key").containsKey("service");
     }
 }

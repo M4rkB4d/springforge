@@ -23,7 +23,7 @@ class Ex02_GracefulShutdownTest {
     @DisplayName("Shutdown mode is graceful (not immediate)")
     void shutdownModeIsGraceful() {
         GracefulShutdownConfig config = new GracefulShutdownConfig();
-        assertThat(config.getShutdownMode()).isEqualTo("graceful");
+        assertThat(config.getShutdownMode()).as("shutdown mode should be graceful").isEqualTo("graceful");
     }
 
     @Test

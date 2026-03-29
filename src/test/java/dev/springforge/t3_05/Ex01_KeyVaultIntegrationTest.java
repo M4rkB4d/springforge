@@ -31,6 +31,7 @@ class Ex01_KeyVaultIntegrationTest {
     @DisplayName("db-password secret is injected from properties")
     void dbPasswordInjected() {
         assertThat(keyVaultConfig.getDbPassword())
+                .as("db-password should be injected from vault")
                 .isEqualTo("test-db-password-from-vault");
     }
 
@@ -38,6 +39,7 @@ class Ex01_KeyVaultIntegrationTest {
     @DisplayName("api-key secret is injected from properties")
     void apiKeyInjected() {
         assertThat(keyVaultConfig.getApiKey())
+                .as("api-key should be injected from vault")
                 .isEqualTo("test-api-key-from-vault");
     }
 }
