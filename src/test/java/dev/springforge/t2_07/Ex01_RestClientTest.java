@@ -3,6 +3,8 @@ package dev.springforge.t2_07;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import org.springframework.web.client.RestClient;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -26,14 +28,14 @@ class Ex01_RestClientTest {
     @Test
     @DisplayName("WeatherClient can be constructed with a base URL")
     void clientCanBeConstructed() {
-        WeatherClient client = new WeatherClient("http://localhost:8080");
+        WeatherClient client = new WeatherClient(RestClient.builder(), "http://localhost:8080");
         assertThat(client).isNotNull();
     }
 
     @Test
     @DisplayName("getWeather throws UnsupportedOperationException before implementation")
     void getWeatherThrowsBeforeImplementation() {
-        WeatherClient client = new WeatherClient("http://localhost:8080");
+        WeatherClient client = new WeatherClient(RestClient.builder(), "http://localhost:8080");
         try {
             client.getWeather("London");
             // If it doesn't throw, implementation exists — test passes
