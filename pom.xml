@@ -96,7 +96,10 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- T3-03: Mongock for MongoDB migrations -->
+        <!-- T3-03: Mongock for MongoDB migrations
+             DISABLED: mongock-springboot-v3 targets Boot 3.x / Spring Data 4.x.
+             No Boot 4.0 compatible artifact exists yet (needs mongock-springboot-v4
+             or mongodb-springdata-v5-driver). Re-enable when Mongock ships Boot 4 support.
         <dependency>
             <groupId>io.mongock</groupId>
             <artifactId>mongock-springboot-v3</artifactId>
@@ -107,6 +110,7 @@
             <artifactId>mongodb-springdata-v4-driver</artifactId>
             <version>5.5.0</version>
         </dependency>
+        -->
 
         <!-- Testing -->
         <dependency>

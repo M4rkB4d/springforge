@@ -1,6 +1,6 @@
 package dev.springforge.t3_03;
 
-import io.mongock.runner.springboot.EnableMongock;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +31,16 @@ import static org.assertj.core.api.Assertions.assertThat;
  * both ensure each migration runs exactly once.
  *
  * REQUIRES: Docker running
+ *
+ * STATUS: DISABLED — Mongock 5.5.0 (mongock-springboot-v3) is incompatible with
+ * Spring Boot 4.0 / Spring Data 5.x. Re-enable when Mongock ships a Boot 4 artifact.
  */
+@Disabled("Mongock 5.5.0 incompatible with Boot 4.0 — no mongock-springboot-v4 artifact yet")
 @SpringBootTest(properties = {
         "mongock.enabled=true",
         "mongock.migration-scan-package=dev.springforge.t3_03"
 })
 @Import(DualStoreTestConfig.class)
-@EnableMongock
 @DisplayName("T3-03 Ex03: Mongock Migration")
 class Ex03_MongockMigrationTest {
 
