@@ -21,7 +21,7 @@ Build your first Spring Boot application with a REST endpoint that returns a gre
 
 ## Files to Edit
 
-- `exercises/t1-02-first-app/src/main/java/dev/springforge/t1_02/HelloController.java`
+- `src/main/java/dev/springforge/t1_02/HelloController.java`
 
 ## Guide
 
