@@ -17,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 03: Mongock Migration
  *
+ * DIFFICULTY: ★★★★★
+ *
  * YOUR TASK:
  * In InitialDataChangeset.java, implement the execute() method to:
  *   1. Create an AuditLog with accountId=1L, action="SYSTEM_INIT",

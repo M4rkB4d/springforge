@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 03: Write Your Own T-SQL Migration
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASKS:
  * Create a file: src/main/resources/db/mssql/V3__add_departments_table.sql
  *

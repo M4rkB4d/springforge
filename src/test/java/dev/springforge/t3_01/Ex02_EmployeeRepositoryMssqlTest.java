@@ -17,6 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: JPA Repository with Azure SQL
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASKS:
  * 1. Complete the Employee entity annotations (@Table, @Column constraints)
  * 2. Run these tests — they verify your entity works with MSSQL via Flyway

@@ -11,8 +11,11 @@ import java.util.function.Supplier;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 1: Lambdas & Functional Interfaces
- * ★☆☆☆☆ Worked Example → ★★☆☆☆ Faded Example
+ * EXERCISE 01: Lambdas & Functional Interfaces
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
+ * Worked Example → Faded Example
  *
  * Spring Boot uses functional interfaces everywhere:
  * - Bean definitions with Supplier

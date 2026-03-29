@@ -14,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: Dual Store Repositories
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASKS:
  * 1. In AuditLog.java: Add @Document and @Field annotations
  * 2. In DualStoreConfig.java: Add @EnableJpaRepositories and @EnableMongoRepositories

@@ -10,8 +10,11 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 2: @Value Injection
- * ★★☆☆☆ Faded Example
+ * EXERCISE 02: @Value Injection
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
+ * Faded Example
  *
  * For single properties, @Value is simpler than @ConfigurationProperties.
  * Default values prevent crashes when properties are missing.

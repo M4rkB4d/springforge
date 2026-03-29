@@ -8,6 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: Graceful Shutdown
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASKS:
  * In GracefulShutdownConfig.java:
  *   1. Return "graceful" from getShutdownMode()

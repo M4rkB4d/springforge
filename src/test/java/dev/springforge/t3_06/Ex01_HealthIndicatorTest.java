@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: Custom Health Indicator
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASK:
  * In HealthConfig.java, implement the health() method to return
  * Health.up() with details about the service.

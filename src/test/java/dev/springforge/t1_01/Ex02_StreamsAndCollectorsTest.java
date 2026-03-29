@@ -10,8 +10,11 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 2: Streams & Collectors
- * ★★☆☆☆ Faded Example → ★★★☆☆ Practice
+ * EXERCISE 02: Streams & Collectors
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * Faded Example → Practice
  *
  * Spring service layers transform data constantly.
  * Master streams = master Spring data processing.

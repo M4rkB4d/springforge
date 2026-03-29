@@ -15,6 +15,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * EXERCISE 01: Security Filter Chain
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASK:
  * In SecurityConfig.java, configure the SecurityFilterChain so that:
  *   - /api/public/** endpoints are accessible without authentication

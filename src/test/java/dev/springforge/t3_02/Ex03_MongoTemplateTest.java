@@ -22,6 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 03: MongoTemplate — When Repository Isn't Enough
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * MongoTemplate gives you full control for:
  * - Criteria queries (like JPA's CriteriaBuilder)
  * - Partial updates ($set, $push, $inc)

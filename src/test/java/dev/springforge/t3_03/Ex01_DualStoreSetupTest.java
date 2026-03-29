@@ -15,6 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: Dual Data Store Setup (Worked Example)
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * This test verifies that BOTH data stores are accessible
  * in the same Spring context — SQL Server via JPA and
  * MongoDB via Spring Data MongoDB.

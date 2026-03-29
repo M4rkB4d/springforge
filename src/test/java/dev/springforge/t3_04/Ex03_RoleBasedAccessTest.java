@@ -16,6 +16,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * EXERCISE 03: Role-Based Access Control
  *
+ * DIFFICULTY: ★★★★★
+ *
  * YOUR TASK:
  * In SecureController.java, add @PreAuthorize("hasAuthority('SCOPE_admin')")
  * to the /api/secure/admin endpoint.

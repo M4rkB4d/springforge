@@ -9,8 +9,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Exercise 3: Generics & Records
- * ★★☆☆☆ Faded Example → ★★★☆☆ Practice
+ * EXERCISE 03: Generics & Records
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * Faded Example → Practice
  *
  * Spring Boot 4.0 uses records extensively for DTOs and configuration.
  * Generics power the entire Spring Data repository system.

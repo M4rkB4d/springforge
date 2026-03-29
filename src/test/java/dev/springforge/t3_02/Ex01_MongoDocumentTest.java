@@ -15,6 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: MongoDB Document Basics
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASKS:
  * 1. Add @Document(collection = "products") to Product class
  * 2. Add @Field annotations as described in the Product javadoc

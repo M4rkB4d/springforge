@@ -16,6 +16,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * EXERCISE 02: JWT Authentication
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASK:
  * In SecureController.java, implement the /api/secure/profile endpoint:
  *   - Extract "sub", "name", "email" claims from the JWT

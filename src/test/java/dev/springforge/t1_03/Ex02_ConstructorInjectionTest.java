@@ -9,8 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 2: Constructor Injection
- * ★★☆☆☆ Faded Example
+ * EXERCISE 02: Constructor Injection
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
+ * Faded Example
  *
  * Constructor injection is THE way to do DI in Spring Boot:
  * - Dependencies are clearly declared

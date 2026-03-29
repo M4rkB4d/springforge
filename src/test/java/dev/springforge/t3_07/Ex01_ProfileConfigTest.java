@@ -12,6 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: Spring Profiles
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASKS:
  * In ProfileConfig.java:
  *   1. Add @Profile("dev") to DevConfig

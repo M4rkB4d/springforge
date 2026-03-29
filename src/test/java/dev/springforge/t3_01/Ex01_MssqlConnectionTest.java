@@ -16,6 +16,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: Connect to SQL Server via Testcontainers (Worked Example)
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * This test demonstrates:
  * - MSSQLServerContainer with .acceptLicense()
  * - @ServiceConnection auto-wiring the datasource

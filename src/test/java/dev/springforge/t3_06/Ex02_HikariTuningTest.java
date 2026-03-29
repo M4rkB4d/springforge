@@ -8,6 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: HikariCP Tuning for Azure SQL
  *
+ * DIFFICULTY: ★★★☆☆
+ *
  * YOUR TASKS:
  * In HikariTuningConfig.java:
  *   1. Return 1740000 from getRecommendedMaxLifetime()

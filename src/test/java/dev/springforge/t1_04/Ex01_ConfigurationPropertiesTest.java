@@ -9,8 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 1: @ConfigurationProperties
- * ★★☆☆☆ Faded Example
+ * EXERCISE 01: @ConfigurationProperties
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
+ * Faded Example
  *
  * Spring Boot maps YAML/properties to Java objects automatically.
  * No manual parsing, no getString() calls — just annotate and use.

@@ -10,8 +10,11 @@ import org.springframework.test.context.ActiveProfiles;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 3: Spring Profiles
- * ★★★☆☆ Practice
+ * EXERCISE 03: Spring Profiles
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * Practice
  *
  * Profiles let you swap implementations based on environment:
  * - "formal" profile → FormalGreetingService

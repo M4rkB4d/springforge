@@ -10,6 +10,10 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
+ * EXERCISE 03b: @ConditionalOnProperty (Disabled)
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
  * Same exercise, but proves the bean is ABSENT when condition is false.
  */
 @SpringBootTest(classes = ConfigTestApp.class)

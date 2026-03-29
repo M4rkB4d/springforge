@@ -9,8 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 1: Component Scanning & @Service
- * ★☆☆☆☆ Worked Example
+ * EXERCISE 01: Component Scanning & @Service
+ *
+ * DIFFICULTY: ★☆☆☆☆
+ *
+ * Worked Example
  *
  * Spring scans your packages for @Component, @Service, @Repository, @Controller.
  * When it finds one, it creates a bean and manages its lifecycle.

@@ -10,8 +10,11 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Exercise 3: @ConditionalOnProperty
- * ★★★☆☆ Practice
+ * EXERCISE 03: @ConditionalOnProperty
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * Practice
  *
  * Auto-configuration's secret: beans only exist when conditions are met.
  * This is how Spring Boot configures hundreds of things without you asking.

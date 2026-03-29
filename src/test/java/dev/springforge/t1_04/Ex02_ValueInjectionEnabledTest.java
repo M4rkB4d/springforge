@@ -10,6 +10,10 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
+ * EXERCISE 02b: @Value Injection (Enabled)
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
  * Same exercise, but with the property explicitly set to true.
  * This proves @Value actually reads the property, not just the default.
  */

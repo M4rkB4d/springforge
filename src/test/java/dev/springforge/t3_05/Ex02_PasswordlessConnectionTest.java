@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: Passwordless Connection Pattern
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASKS:
  * In PasswordlessDataSourceConfig.java:
  *   1. Return "ActiveDirectoryDefault" from getAuthenticationMethod()

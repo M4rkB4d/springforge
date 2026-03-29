@@ -8,8 +8,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Exercise 1: Unit Testing with JUnit 5 + AssertJ
- * ★☆☆☆☆ Worked Example
+ * EXERCISE 01: Unit Testing with JUnit 5 + AssertJ
+ *
+ * DIFFICULTY: ★☆☆☆☆
+ *
+ * Worked Example
  *
  * No Spring context here — pure unit testing. Fast, focused, isolated.
  *

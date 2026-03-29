@@ -10,6 +10,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 01: Key Vault Integration
  *
+ * DIFFICULTY: ★★★★☆
+ *
  * YOUR TASK:
  * In KeyVaultConfig.java, add @Value annotations to inject secrets.
  * The test uses default values since we're not connected to a real vault.
