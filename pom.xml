@@ -176,6 +176,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-flyway</artifactId>
         </dependency>
+        <!-- Flyway PostgreSQL support (T2-06, Flyway 10+ modularized DB support) -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+        </dependency>
         <!-- Flyway SQL Server support (T3-01) -->
         <dependency>
             <groupId>org.flywaydb</groupId>
