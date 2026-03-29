@@ -20,6 +20,5 @@ spring:
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoRepositoriesAutoConfiguration
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoReactiveAutoConfiguration
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoReactiveRepositoriesAutoConfiguration
-      # Testcontainers
-      - org.springframework.boot.testcontainers.service.connection.ServiceConnectionAutoConfiguration
-      - org.springframework.boot.testcontainers.properties.TestcontainersPropertySourceAutoConfiguration
+      # Note: Testcontainers auto-configs NOT excluded — they are no-ops when
+      # no @ServiceConnection container beans exist, but required for T2-05/T2-06

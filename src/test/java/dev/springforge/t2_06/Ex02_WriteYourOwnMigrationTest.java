@@ -26,7 +26,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running
  */
-@SpringBootTest(properties = "spring.flyway.enabled=true")
+@SpringBootTest(properties = {
+        "spring.flyway.enabled=true",
+        "spring.jpa.hibernate.ddl-auto=none"
+})
 @Import(TestcontainersConfig.class)
 @DisplayName("T2-06 Ex02: Write Your Own Migration")
 class Ex02_WriteYourOwnMigrationTest {
