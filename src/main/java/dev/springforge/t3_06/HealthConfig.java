@@ -32,7 +32,9 @@ public class HealthConfig implements HealthIndicator {
 
     @Override
     public Health health() {
-        // TODO: Return Health.up() with details
-        throw new UnsupportedOperationException("Implement the health indicator");
+        return Health.up()
+                .withDetail("database", "connected")
+                .withDetail("service", "springforge")
+                .build();
     }
 }

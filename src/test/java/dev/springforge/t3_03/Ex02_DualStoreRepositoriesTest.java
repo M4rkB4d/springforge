@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running
  */
-@SpringBootTest
+@SpringBootTest(classes = {DualStoreTestApp.class, DualStoreTestConfig.class}, properties = {"spring.jpa.hibernate.ddl-auto=create-drop", "spring.autoconfigure.exclude="})
 @Import(DualStoreTestConfig.class)
 @DisplayName("T3-03 Ex02: Dual Store Repositories")
 class Ex02_DualStoreRepositoriesTest {

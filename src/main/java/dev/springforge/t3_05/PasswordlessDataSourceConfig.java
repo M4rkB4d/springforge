@@ -38,17 +38,13 @@ public class PasswordlessDataSourceConfig {
      * This is the mssql-jdbc 12.2+ parameter name for DefaultAzureCredential.
      */
     public String getAuthenticationMethod() {
-        // TODO: Return "ActiveDirectoryDefault"
-        throw new UnsupportedOperationException("Return the correct authentication method");
+        return "ActiveDirectoryDefault";
     }
 
     /**
      * Returns whether username/password is required for Managed Identity auth.
-     *
-     * TODO: Return false — Managed Identity doesn't use username/password.
      */
     public boolean requiresCredentials() {
-        // TODO: Return false
-        throw new UnsupportedOperationException("Implement requiresCredentials");
+        return false;
     }
 }

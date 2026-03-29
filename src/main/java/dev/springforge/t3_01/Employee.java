@@ -21,25 +21,25 @@ import java.time.LocalDate;
  * Note: SQL Server uses IDENTITY instead of PostgreSQL's SERIAL.
  */
 @Entity
-// TODO: Add @Table(name = "employees", schema = "dbo")
+@Table(name = "employees", schema = "dbo")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Add @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String firstName;
 
-    // TODO: Add @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100)
     private String lastName;
 
-    // TODO: Add @Column(unique = true, nullable = false, length = 150)
+    @Column(unique = true, nullable = false, length = 150)
     private String email;
 
     private String department;
 
-    // TODO: Add @Column(precision = 10, scale = 2)
+    @Column(precision = 10, scale = 2)
     private BigDecimal salary;
 
     private LocalDate hireDate;

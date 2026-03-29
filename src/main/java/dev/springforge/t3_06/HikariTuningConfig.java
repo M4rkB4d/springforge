@@ -34,18 +34,14 @@ public class HikariTuningConfig {
      * TODO: Return 1740000 (29 minutes)
      */
     public long getRecommendedMaxLifetime() {
-        // TODO: Return the correct value
-        throw new UnsupportedOperationException("Return the recommended max-lifetime");
+        return 1740000;
     }
 
     /**
      * Returns the recommended keepalive-time in milliseconds.
      * Prevents Azure infrastructure from killing idle TCP connections.
-     *
-     * TODO: Return 30000 (30 seconds)
      */
     public long getRecommendedKeepaliveTime() {
-        // TODO: Return the correct value
-        throw new UnsupportedOperationException("Return the recommended keepalive-time");
+        return 30000;
     }
 }

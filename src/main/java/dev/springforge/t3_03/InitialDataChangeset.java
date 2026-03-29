@@ -38,11 +38,14 @@ public class InitialDataChangeset {
 
     // @Execution
     public void execute(MongoTemplate mongoTemplate) {
-        // TODO: Create and save an initial AuditLog document
+        mongoTemplate.save(new AuditLog(1L, "SYSTEM_INIT", "Initial system setup via Mongock migration"));
     }
 
     // @RollbackExecution
     public void rollback(MongoTemplate mongoTemplate) {
-        // TODO: Remove the initial AuditLog document
+        mongoTemplate.remove(
+                org.springframework.data.mongodb.core.query.Query.query(
+                        org.springframework.data.mongodb.core.query.Criteria.where("action").is("SYSTEM_INIT")),
+                AuditLog.class);
     }
 }

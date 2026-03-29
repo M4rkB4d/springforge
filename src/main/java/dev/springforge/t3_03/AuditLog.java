@@ -19,16 +19,16 @@ import java.time.Instant;
  * what it's best at. SQL for structured relational data,
  * MongoDB for flexible, high-volume event logs.
  */
-// TODO: Add @Document(collection = "audit_logs")
+@Document(collection = "audit_logs")
 public class AuditLog {
 
     @Id
     private String id;
 
-    // TODO: Add @Field("account_id")
+    @Field("account_id")
     private Long accountId;
 
-    // TODO: Add @Field("action")
+    @Field("action")
     private String action;
 
     private String details;

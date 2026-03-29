@@ -35,13 +35,14 @@ public class SecureController {
 
     @GetMapping("/profile")
     public Map<String, Object> profile(@AuthenticationPrincipal Jwt jwt) {
-        // TODO: Extract "sub", "name", and "email" claims from the JWT
-        // Return them in a Map with keys "userId", "name", "email"
-        // Hint: jwt.getClaimAsString("sub"), jwt.getClaimAsString("name"), etc.
-        throw new UnsupportedOperationException("Extract JWT claims");
+        return Map.of(
+                "userId", jwt.getClaimAsString("sub"),
+                "name", jwt.getClaimAsString("name"),
+                "email", jwt.getClaimAsString("email")
+        );
     }
 
-    // TODO: Add @PreAuthorize("hasAuthority('SCOPE_admin')") annotation
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
     @GetMapping("/admin")
     public Map<String, String> adminOnly(@AuthenticationPrincipal Jwt jwt) {
         return Map.of(

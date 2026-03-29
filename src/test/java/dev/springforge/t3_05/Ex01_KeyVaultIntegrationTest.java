@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * In production, these defaults would be overridden by actual
  * Key Vault secrets loaded via spring-cloud-azure-starter-keyvault-secrets.
  */
-@SpringBootTest(properties = {
+@SpringBootTest(classes = AzureConfigTestApp.class, properties = {
         "db-password=test-db-password-from-vault",
         "api-key=test-api-key-from-vault"
 })

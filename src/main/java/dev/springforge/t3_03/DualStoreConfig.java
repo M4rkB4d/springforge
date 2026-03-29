@@ -1,7 +1,9 @@
 package dev.springforge.t3_03;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
@@ -22,7 +24,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * Explicit @Enable* annotations ensure there's no ambiguity.
  */
 @Configuration
-// TODO: Add @EnableJpaRepositories(basePackages = "dev.springforge.t3_03")
-// TODO: Add @EnableMongoRepositories(basePackages = "dev.springforge.t3_03")
+@ConditionalOnBean(MongoTemplate.class)
+@EnableJpaRepositories(basePackages = "dev.springforge.t3_03")
+@EnableMongoRepositories(basePackages = "dev.springforge.t3_03")
 public class DualStoreConfig {
 }

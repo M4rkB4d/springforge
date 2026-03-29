@@ -25,13 +25,13 @@ import java.util.List;
  * - No @GeneratedValue — MongoDB generates _id automatically for String IDs
  * - Embedded objects are natural (no @OneToMany needed)
  */
-// TODO: Add @Document(collection = "products")
+@Document(collection = "products")
 public class Product {
 
     @Id
     private String id;
 
-    // TODO: Add @Field("product_name")
+    @Field("product_name")
     private String name;
 
     private String description;
@@ -40,7 +40,7 @@ public class Product {
 
     private String category;
 
-    // TODO: Add @Field("product_tags")
+    @Field("product_tags")
     private List<String> tags = new ArrayList<>();
 
     // Embedded object — no @OneToMany or join table needed!

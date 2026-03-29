@@ -19,11 +19,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 1. Add @Document(collection = "products") to Product class
  * 2. Add @Field annotations as described in the Product javadoc
  *
- * This uses @DataMongoTest (slice test) — only MongoDB beans are loaded.
+ * This uses @DataMongoTest(properties = "spring.autoconfigure.exclude=") (slice test) — only MongoDB beans are loaded.
  *
  * REQUIRES: Docker running
  */
-@DataMongoTest
+@DataMongoTest(properties = "spring.autoconfigure.exclude=")
 @Import(MongoTestcontainersConfig.class)
 @DisplayName("T3-02 Ex01: MongoDB Document")
 class Ex01_MongoDocumentTest {

@@ -37,18 +37,14 @@ public class GracefulShutdownConfig {
      * TODO: Return "graceful" (not "immediate")
      */
     public String getShutdownMode() {
-        // TODO: Return "graceful"
-        throw new UnsupportedOperationException("Return the shutdown mode");
+        return "graceful";
     }
 
     /**
      * Returns the recommended shutdown timeout in seconds.
      * Must be less than Azure's terminationGracePeriodSeconds.
-     *
-     * TODO: Return 30
      */
     public int getShutdownTimeoutSeconds() {
-        // TODO: Return 30
-        throw new UnsupportedOperationException("Return the shutdown timeout");
+        return 30;
     }
 }

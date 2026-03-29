@@ -26,7 +26,7 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class ProfileConfig {
 
-    // TODO: Add @Profile("dev")
+    @Profile("dev")
     @Configuration
     public static class DevConfig {
         @Value("${app.environment:unknown}")
@@ -35,7 +35,7 @@ public class ProfileConfig {
         public String getEnvironment() { return environment; }
     }
 
-    // TODO: Add @Profile("prod")
+    @Profile("prod")
     @Configuration
     public static class ProdConfig {
         @Value("${app.environment:unknown}")

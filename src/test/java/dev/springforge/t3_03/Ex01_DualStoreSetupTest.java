@@ -26,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running (for SQL Server + MongoDB containers)
  */
-@SpringBootTest
+@SpringBootTest(classes = {DualStoreTestApp.class, DualStoreTestConfig.class}, properties = {"spring.jpa.hibernate.ddl-auto=create-drop", "spring.autoconfigure.exclude="})
 @Import(DualStoreTestConfig.class)
 @DisplayName("T3-03 Ex01: Dual Data Store Setup")
 class Ex01_DualStoreSetupTest {

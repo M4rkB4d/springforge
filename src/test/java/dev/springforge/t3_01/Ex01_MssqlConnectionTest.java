@@ -23,10 +23,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running
  */
-@SpringBootTest(properties = {
+@SpringBootTest(classes = MssqlTestApp.class, properties = {
         "spring.flyway.enabled=true",
         "spring.flyway.locations=classpath:db/mssql",
-        "spring.jpa.hibernate.ddl-auto=validate"
+        "spring.jpa.hibernate.ddl-auto=none"
 })
 @Import(MssqlTestcontainersConfig.class)
 @DisplayName("T3-01 Ex01: MSSQL Connection")

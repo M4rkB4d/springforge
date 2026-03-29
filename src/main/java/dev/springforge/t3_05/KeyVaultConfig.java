@@ -27,11 +27,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KeyVaultConfig {
 
-    // TODO: @Value("${db-password:default-password}")
-    private String dbPassword = "default-password";
+    @Value("${db-password:default-password}")
+    private String dbPassword;
 
-    // TODO: @Value("${api-key:default-key}")
-    private String apiKey = "default-key";
+    @Value("${api-key:default-key}")
+    private String apiKey;
 
     public String getDbPassword() {
         return dbPassword;

@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *   - Azure handles authentication via identity tokens
  *   - Same code works locally (Azure CLI) and in production (Managed Identity)
  */
-@SpringBootTest
+@SpringBootTest(classes = AzureConfigTestApp.class)
 @DisplayName("T3-05 Ex02: Passwordless Connection")
 class Ex02_PasswordlessConnectionTest {
 

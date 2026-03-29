@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * REQUIRES: Docker running
  */
-@DataMongoTest
+@DataMongoTest(properties = "spring.autoconfigure.exclude=")
 @Import(MongoTestcontainersConfig.class)
 @DisplayName("T3-02 Ex03: MongoTemplate Operations")
 class Ex03_MongoTemplateTest {

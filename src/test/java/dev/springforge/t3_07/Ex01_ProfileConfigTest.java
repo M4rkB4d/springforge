@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * This test activates the "dev" profile and verifies that only
  * DevConfig is loaded (not ProdConfig).
  */
-@SpringBootTest(properties = "app.environment=development")
+@SpringBootTest(classes = DeploymentTestApp.class, properties = "app.environment=development")
 @ActiveProfiles("dev")
 @DisplayName("T3-07 Ex01: Spring Profiles")
 class Ex01_ProfileConfigTest {
