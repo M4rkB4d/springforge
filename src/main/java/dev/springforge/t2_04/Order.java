@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
  *
  * YOUR TASKS:
  * 1. Add @Table(name = "orders")
- * 2. Add @ManyToOne relationship to Customer:
- *    - @ManyToOne(fetch = FetchType.LAZY)
+ * 2. Add @JoinColumn to the customer field:
  *    - @JoinColumn(name = "customer_id", nullable = false)
+ *    (@ManyToOne is already provided — your job is the join column mapping)
  *
- * The @Entity, @Id, and @GeneratedValue are already set up.
- * Your job: add the relationship mapping between Order and Customer.
+ * The @Entity, @Id, @GeneratedValue, and @ManyToOne are already set up.
+ * Your job: add the table name and join column constraint.
  *
  * This teaches: entity relationships, fetch types, and join columns.
  */
