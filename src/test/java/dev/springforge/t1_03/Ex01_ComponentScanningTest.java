@@ -27,21 +27,21 @@ class Ex01_ComponentScanningTest {
     @Test
     @DisplayName("Spring should discover and inject SimpleGreetingService")
     void springDiscoversService() {
-        assertThat(greetingService).isNotNull();
-        assertThat(greetingService).isInstanceOf(SimpleGreetingService.class);
+        assertThat(greetingService).as("service should be injected").isNotNull();
+        assertThat(greetingService).as("should be SimpleGreetingService").isInstanceOf(SimpleGreetingService.class);
     }
 
     @Test
     @DisplayName("greet() should return formatted greeting")
     void greetReturnsFormattedGreeting() {
         String result = greetingService.greet("Mark");
-        assertThat(result).isEqualTo("Hello, Mark!");
+        assertThat(result).as("greet('Mark') result").isEqualTo("Hello, Mark!");
     }
 
     @Test
     @DisplayName("greet() should work with different names")
     void greetWorksWithDifferentNames() {
-        assertThat(greetingService.greet("Spring")).isEqualTo("Hello, Spring!");
-        assertThat(greetingService.greet("Boot")).isEqualTo("Hello, Boot!");
+        assertThat(greetingService.greet("Spring")).as("greet('Spring') result").isEqualTo("Hello, Spring!");
+        assertThat(greetingService.greet("Boot")).as("greet('Boot') result").isEqualTo("Hello, Boot!");
     }
 }

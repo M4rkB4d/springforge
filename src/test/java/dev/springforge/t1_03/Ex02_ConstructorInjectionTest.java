@@ -30,20 +30,21 @@ class Ex02_ConstructorInjectionTest {
     @Test
     @DisplayName("NotificationService should be auto-injected by Spring")
     void notificationServiceIsInjected() {
-        assertThat(notificationService).isNotNull();
+        assertThat(notificationService).as("service should be injected").isNotNull();
     }
 
     @Test
     @DisplayName("sendWelcome should use injected GreetingService")
     void sendWelcomeUsesInjectedService() {
         String result = notificationService.sendWelcome("Mark");
-        assertThat(result).isEqualTo("NOTIFICATION: Hello, Mark!");
+        assertThat(result).as("sendWelcome('Mark') result").isEqualTo("NOTIFICATION: Hello, Mark!");
     }
 
     @Test
     @DisplayName("sendWelcome should work with different names")
     void sendWelcomeWorksWithDifferentNames() {
         assertThat(notificationService.sendWelcome("Dev"))
+                .as("sendWelcome('Dev') result")
                 .isEqualTo("NOTIFICATION: Hello, Dev!");
     }
 }

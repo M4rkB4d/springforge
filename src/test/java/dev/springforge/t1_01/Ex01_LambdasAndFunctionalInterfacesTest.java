@@ -30,18 +30,18 @@ class Ex01_LambdasAndFunctionalInterfacesTest {
     @DisplayName("isPositive should return true for positive numbers")
     void isPositive_returnsTrue_forPositiveNumbers() {
         Predicate<Integer> predicate = LambdaExercises.isPositive();
-        assertThat(predicate.test(5)).isTrue();
-        assertThat(predicate.test(1)).isTrue();
-        assertThat(predicate.test(100)).isTrue();
+        assertThat(predicate.test(5)).as("5 should be positive").isTrue();
+        assertThat(predicate.test(1)).as("1 should be positive").isTrue();
+        assertThat(predicate.test(100)).as("100 should be positive").isTrue();
     }
 
     @Test
     @DisplayName("isPositive should return false for zero and negative numbers")
     void isPositive_returnsFalse_forZeroAndNegative() {
         Predicate<Integer> predicate = LambdaExercises.isPositive();
-        assertThat(predicate.test(0)).isFalse();
-        assertThat(predicate.test(-1)).isFalse();
-        assertThat(predicate.test(-99)).isFalse();
+        assertThat(predicate.test(0)).as("0 should not be positive").isFalse();
+        assertThat(predicate.test(-1)).as("-1 should not be positive").isFalse();
+        assertThat(predicate.test(-99)).as("-99 should not be positive").isFalse();
     }
 
     // ── Faded Example: Function ────────────────────────────────────────
@@ -50,8 +50,8 @@ class Ex01_LambdasAndFunctionalInterfacesTest {
     @DisplayName("toUpperCase should transform strings to uppercase")
     void toUpperCase_transformsStrings() {
         Function<String, String> fn = LambdaExercises.toUpperCase();
-        assertThat(fn.apply("hello")).isEqualTo("HELLO");
-        assertThat(fn.apply("Spring Boot")).isEqualTo("SPRING BOOT");
+        assertThat(fn.apply("hello")).as("'hello' uppercased").isEqualTo("HELLO");
+        assertThat(fn.apply("Spring Boot")).as("'Spring Boot' uppercased").isEqualTo("SPRING BOOT");
     }
 
     // ── Your Turn: Supplier ────────────────────────────────────────────
@@ -60,7 +60,7 @@ class Ex01_LambdasAndFunctionalInterfacesTest {
     @DisplayName("greetingSupplier should return 'Hello, SpringForge!'")
     void greetingSupplier_returnsGreeting() {
         Supplier<String> supplier = LambdaExercises.greetingSupplier();
-        assertThat(supplier.get()).isEqualTo("Hello, SpringForge!");
+        assertThat(supplier.get()).as("supplier should return greeting").isEqualTo("Hello, SpringForge!");
     }
 
     // ── Your Turn: Chaining ────────────────────────────────────────────
@@ -70,6 +70,6 @@ class Ex01_LambdasAndFunctionalInterfacesTest {
     void filterAndTransform_filtersAndDoubles() {
         List<Integer> input = List.of(-3, -1, 0, 2, 5, 8);
         List<Integer> result = LambdaExercises.filterAndTransform(input);
-        assertThat(result).containsExactly(4, 10, 16);
+        assertThat(result).as("filter positive then double").containsExactly(4, 10, 16);
     }
 }

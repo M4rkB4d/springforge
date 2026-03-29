@@ -33,9 +33,9 @@ class Ex01_EntityTest {
         Customer customer = new Customer("Alice", "alice@example.com", "555-0101");
         Customer saved = entityManager.persistFlushFind(customer);
 
-        assertThat(saved.getId()).isNotNull();
-        assertThat(saved.getName()).isEqualTo("Alice");
-        assertThat(saved.getEmail()).isEqualTo("alice@example.com");
+        assertThat(saved.getId()).as("ID should be generated").isNotNull();
+        assertThat(saved.getName()).as("name should be persisted").isEqualTo("Alice");
+        assertThat(saved.getEmail()).as("email should be persisted").isEqualTo("alice@example.com");
     }
 
     @Test
@@ -48,9 +48,9 @@ class Ex01_EntityTest {
         entityManager.clear();
         Customer found = entityManager.find(Customer.class, saved.getId());
 
-        assertThat(found).isNotNull();
-        assertThat(found.getName()).isEqualTo("Bob");
-        assertThat(found.getEmail()).isEqualTo("bob@example.com");
-        assertThat(found.getPhone()).isEqualTo("555-0102");
+        assertThat(found).as("customer should be found by ID").isNotNull();
+        assertThat(found.getName()).as("name column mapping").isEqualTo("Bob");
+        assertThat(found.getEmail()).as("email column mapping").isEqualTo("bob@example.com");
+        assertThat(found.getPhone()).as("phone column mapping").isEqualTo("555-0102");
     }
 }

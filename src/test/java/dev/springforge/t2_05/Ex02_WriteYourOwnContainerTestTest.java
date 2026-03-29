@@ -45,8 +45,9 @@ class Ex02_WriteYourOwnContainerTestTest {
     @DisplayName("findByTitleContainingIgnoreCase finds articles with 'jpa' in title")
     void searchByTitleKeyword() {
         List<Article> results = articleRepository.findByTitleContainingIgnoreCase("jpa");
-        assertThat(results).hasSize(3);
+        assertThat(results).as("3 articles contain 'jpa'").hasSize(3);
         assertThat(results).extracting(Article::getTitle)
+                .as("titles containing 'jpa'")
                 .containsExactlyInAnyOrder("JPA Basics", "Advanced JPA", "JPA Performance");
     }
 
@@ -58,20 +59,20 @@ class Ex02_WriteYourOwnContainerTestTest {
         articleRepository.save(first);
 
         Optional<Article> found = articleRepository.findById(first.getId());
-        assertThat(found).isPresent();
-        assertThat(found.get().getTitle()).isEqualTo("Updated Title");
+        assertThat(found).as("updated article should exist").isPresent();
+        assertThat(found.get().getTitle()).as("title should be updated").isEqualTo("Updated Title");
     }
 
     @Test
     @DisplayName("Deleting an article removes it from PostgreSQL")
     void deleteArticleRemoves() {
-        assertThat(articleRepository.count()).isEqualTo(4);
+        assertThat(articleRepository.count()).as("initial count").isEqualTo(4);
 
         Article first = articleRepository.findAll().getFirst();
         Long deletedId = first.getId();
         articleRepository.delete(first);
 
-        assertThat(articleRepository.count()).isEqualTo(3);
-        assertThat(articleRepository.findById(deletedId)).isEmpty();
+        assertThat(articleRepository.count()).as("count after delete").isEqualTo(3);
+        assertThat(articleRepository.findById(deletedId)).as("deleted article should be gone").isEmpty();
     }
 }

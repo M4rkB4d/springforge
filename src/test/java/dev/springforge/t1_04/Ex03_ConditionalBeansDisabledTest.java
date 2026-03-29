@@ -23,6 +23,6 @@ class Ex03_ConditionalBeansDisabledTest {
     @Test
     @DisplayName("Audit bean should NOT exist when app.audit.enabled=false")
     void auditBeanAbsentWhenDisabled() {
-        assertThat(auditMessage).isNull();
+        assertThat(auditMessage).as("audit bean should be absent when disabled").isNull();
     }
 }

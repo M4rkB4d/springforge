@@ -42,7 +42,7 @@ class Ex02_ServiceLayerTest {
                 .willReturn(new WeatherResponse("London", 15.0, "Cloudy", 75));
 
         String summary = weatherService.getWeatherSummary("London");
-        assertThat(summary).isEqualTo("London: 15.0°C, Cloudy");
+        assertThat(summary).as("normal temp summary for London").isEqualTo("London: 15.0°C, Cloudy");
     }
 
     @Test
@@ -52,7 +52,7 @@ class Ex02_ServiceLayerTest {
                 .willReturn(new WeatherResponse("Dubai", 42.0, "Sunny", 20));
 
         String summary = weatherService.getWeatherSummary("Dubai");
-        assertThat(summary).isEqualTo("Dubai: 42.0°C, Sunny (HOT!)");
+        assertThat(summary).as("hot temp should append (HOT!)").isEqualTo("Dubai: 42.0°C, Sunny (HOT!)");
     }
 
     @Test
@@ -62,7 +62,7 @@ class Ex02_ServiceLayerTest {
                 .willReturn(new WeatherResponse("Moscow", -15.0, "Snow", 90));
 
         String summary = weatherService.getWeatherSummary("Moscow");
-        assertThat(summary).isEqualTo("Moscow: -15.0°C, Snow (FREEZING!)");
+        assertThat(summary).as("freezing temp should append (FREEZING!)").isEqualTo("Moscow: -15.0°C, Snow (FREEZING!)");
     }
 
     @Test
@@ -72,6 +72,6 @@ class Ex02_ServiceLayerTest {
                 .willReturn(new WeatherResponse("Cairo", 30.0, "Clear", 30));
 
         String summary = weatherService.getWeatherSummary("Cairo");
-        assertThat(summary).isEqualTo("Cairo: 30.0°C, Clear");
+        assertThat(summary).as("30°C is normal, not HOT").isEqualTo("Cairo: 30.0°C, Clear");
     }
 }

@@ -53,16 +53,17 @@ class Ex03_RelationshipsTest {
     @DisplayName("Order has a reference to its Customer")
     void orderHasCustomerReference() {
         List<Order> orders = orderRepository.findAll();
-        assertThat(orders).isNotEmpty();
-        assertThat(orders.get(0).getCustomer()).isNotNull();
+        assertThat(orders).as("orders should exist").isNotEmpty();
+        assertThat(orders.get(0).getCustomer()).as("order should reference a customer").isNotNull();
     }
 
     @Test
     @DisplayName("findByCustomerId returns orders for a specific customer")
     void findByCustomerIdFilters() {
         List<Order> aliceOrders = orderRepository.findByCustomerId(alice.getId());
-        assertThat(aliceOrders).hasSize(2);
+        assertThat(aliceOrders).as("Alice should have 2 orders").hasSize(2);
         assertThat(aliceOrders).extracting(Order::getDescription)
+                .as("Alice's order descriptions")
                 .containsExactlyInAnyOrder("Laptop", "Mouse");
     }
 
@@ -70,7 +71,7 @@ class Ex03_RelationshipsTest {
     @DisplayName("findByMinTotal returns orders above threshold")
     void findByMinTotalFilters() {
         List<Order> expensive = orderRepository.findByMinTotal(new BigDecimal("100.00"));
-        assertThat(expensive).hasSize(1);
-        assertThat(expensive.get(0).getDescription()).isEqualTo("Laptop");
+        assertThat(expensive).as("orders above $100").hasSize(1);
+        assertThat(expensive.get(0).getDescription()).as("expensive order is Laptop").isEqualTo("Laptop");
     }
 }

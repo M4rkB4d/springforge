@@ -29,16 +29,16 @@ class Ex01_UnitTestingTest {
     @Test
     @DisplayName("add() should sum two numbers")
     void addSumsTwoNumbers() {
-        assertThat(calculator.add(2, 3)).isEqualTo(5);
-        assertThat(calculator.add(-1, 1)).isEqualTo(0);
-        assertThat(calculator.add(0, 0)).isEqualTo(0);
+        assertThat(calculator.add(2, 3)).as("add(2, 3) should return 5").isEqualTo(5);
+        assertThat(calculator.add(-1, 1)).as("add(-1, 1) should return 0").isEqualTo(0);
+        assertThat(calculator.add(0, 0)).as("add(0, 0) should return 0").isEqualTo(0);
     }
 
     @Test
     @DisplayName("divide() should divide correctly")
     void divideDividesCorrectly() {
-        assertThat(calculator.divide(10, 2)).isEqualTo(5);
-        assertThat(calculator.divide(7, 2)).isEqualTo(3); // integer division
+        assertThat(calculator.divide(10, 2)).as("divide(10, 2) should return 5").isEqualTo(5);
+        assertThat(calculator.divide(7, 2)).as("divide(7, 2) integer division").isEqualTo(3); // integer division
     }
 
     @Test
@@ -52,8 +52,8 @@ class Ex01_UnitTestingTest {
     @Test
     @DisplayName("isEven() should identify even and odd numbers")
     void isEvenIdentifiesCorrectly() {
-        assertThat(calculator.isEven(4)).isTrue();
-        assertThat(calculator.isEven(7)).isFalse();
-        assertThat(calculator.isEven(0)).isTrue();
+        assertThat(calculator.isEven(4)).as("4 should be even").isTrue();
+        assertThat(calculator.isEven(7)).as("7 should be odd").isFalse();
+        assertThat(calculator.isEven(0)).as("0 should be even").isTrue();
     }
 }

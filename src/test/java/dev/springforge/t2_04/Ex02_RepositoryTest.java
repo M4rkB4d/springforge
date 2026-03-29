@@ -46,30 +46,31 @@ class Ex02_RepositoryTest {
     @DisplayName("findAll returns all customers")
     void findAllReturnsAllCustomers() {
         List<Customer> customers = customerRepository.findAll();
-        assertThat(customers).hasSize(3);
+        assertThat(customers).as("findAll should return all 3 customers").hasSize(3);
     }
 
     @Test
     @DisplayName("findByEmail returns matching customer")
     void findByEmailReturnsCustomer() {
         Optional<Customer> customer = customerRepository.findByEmail("alice@example.com");
-        assertThat(customer).isPresent();
-        assertThat(customer.get().getName()).isEqualTo("Alice Johnson");
+        assertThat(customer).as("should find alice by email").isPresent();
+        assertThat(customer.get().getName()).as("found customer name").isEqualTo("Alice Johnson");
     }
 
     @Test
     @DisplayName("findByEmail returns empty for non-existent email")
     void findByEmailReturnsEmptyForMissing() {
         Optional<Customer> customer = customerRepository.findByEmail("nobody@example.com");
-        assertThat(customer).isEmpty();
+        assertThat(customer).as("non-existent email returns empty").isEmpty();
     }
 
     @Test
     @DisplayName("findByNameContainingIgnoreCase finds partial matches")
     void findByNameContainingIgnoreCase() {
         List<Customer> johnsons = customerRepository.findByNameContainingIgnoreCase("johnson");
-        assertThat(johnsons).hasSize(2);
+        assertThat(johnsons).as("should find 2 Johnsons").hasSize(2);
         assertThat(johnsons).extracting(Customer::getName)
+                .as("Johnson family members")
                 .containsExactlyInAnyOrder("Alice Johnson", "Charlie Johnson");
     }
 }

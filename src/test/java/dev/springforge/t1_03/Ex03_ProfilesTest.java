@@ -31,20 +31,21 @@ class Ex03_ProfilesTest {
     @Test
     @DisplayName("With 'formal' profile, FormalGreetingService should be injected")
     void formalProfileUsesCorrectImpl() {
-        assertThat(greetingService).isInstanceOf(FormalGreetingService.class);
+        assertThat(greetingService).as("formal profile should activate FormalGreetingService").isInstanceOf(FormalGreetingService.class);
     }
 
     @Test
     @DisplayName("Formal greeting should use polite format")
     void formalGreetingIsPolite() {
         String result = greetingService.greet("Mark");
-        assertThat(result).isEqualTo("Good day, Mark. How may I assist you?");
+        assertThat(result).as("formal greeting for 'Mark'").isEqualTo("Good day, Mark. How may I assist you?");
     }
 
     @Test
     @DisplayName("Formal greeting works with different names")
     void formalGreetingWithDifferentNames() {
         assertThat(greetingService.greet("Sir"))
+                .as("formal greeting for 'Sir'")
                 .isEqualTo("Good day, Sir. How may I assist you?");
     }
 }

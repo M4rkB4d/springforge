@@ -29,14 +29,14 @@ class Ex02_StreamsAndCollectorsTest {
     @DisplayName("namesStartingWith should filter names by prefix (case-insensitive)")
     void namesStartingWith_filtersCorrectly() {
         List<String> result = StreamExercises.namesStartingWith(names, "A");
-        assertThat(result).containsExactly("Alice", "Anna", "Alex");
+        assertThat(result).as("names starting with 'A'").containsExactly("Alice", "Anna", "Alex");
     }
 
     @Test
     @DisplayName("namesStartingWith should return empty for no matches")
     void namesStartingWith_emptyForNoMatch() {
         List<String> result = StreamExercises.namesStartingWith(names, "Z");
-        assertThat(result).isEmpty();
+        assertThat(result).as("no names start with 'Z'").isEmpty();
     }
 
     // ── Map + Join ─────────────────────────────────────────────────────
@@ -45,7 +45,7 @@ class Ex02_StreamsAndCollectorsTest {
     @DisplayName("joinUpperCased should uppercase and join with comma")
     void joinUpperCased_transformsAndJoins() {
         String result = StreamExercises.joinUpperCased(List.of("spring", "boot", "rocks"));
-        assertThat(result).isEqualTo("SPRING, BOOT, ROCKS");
+        assertThat(result).as("uppercased and comma-joined").isEqualTo("SPRING, BOOT, ROCKS");
     }
 
     // ── GroupBy ────────────────────────────────────────────────────────
@@ -54,9 +54,9 @@ class Ex02_StreamsAndCollectorsTest {
     @DisplayName("groupByFirstLetter should group names by their first character")
     void groupByFirstLetter_groupsCorrectly() {
         Map<Character, List<String>> result = StreamExercises.groupByFirstLetter(names);
-        assertThat(result.get('A')).containsExactly("Alice", "Anna", "Alex");
-        assertThat(result.get('B')).containsExactly("Bob");
-        assertThat(result.get('C')).containsExactly("Charlie");
+        assertThat(result.get('A')).as("names grouped under 'A'").containsExactly("Alice", "Anna", "Alex");
+        assertThat(result.get('B')).as("names grouped under 'B'").containsExactly("Bob");
+        assertThat(result.get('C')).as("names grouped under 'C'").containsExactly("Charlie");
     }
 
     // ── Find + Optional ────────────────────────────────────────────────
@@ -65,13 +65,13 @@ class Ex02_StreamsAndCollectorsTest {
     @DisplayName("findLongest should return the longest string")
     void findLongest_returnsLongest() {
         Optional<String> result = StreamExercises.findLongest(names);
-        assertThat(result).isPresent().contains("Charlie");
+        assertThat(result).as("longest name is Charlie").isPresent().contains("Charlie");
     }
 
     @Test
     @DisplayName("findLongest should return empty for empty list")
     void findLongest_emptyForEmptyList() {
         Optional<String> result = StreamExercises.findLongest(List.of());
-        assertThat(result).isEmpty();
+        assertThat(result).as("empty list has no longest").isEmpty();
     }
 }

@@ -40,8 +40,8 @@ class Ex01_FlywayMigrationTest {
     @Test
     @DisplayName("Flyway is auto-configured and migrations have run")
     void flywayIsConfigured() {
-        assertThat(flyway).isNotNull();
-        assertThat(flyway.info().applied().length).isGreaterThanOrEqualTo(2);
+        assertThat(flyway).as("Flyway should be auto-configured").isNotNull();
+        assertThat(flyway.info().applied().length).as("at least 2 migrations applied").isGreaterThanOrEqualTo(2);
     }
 
     @Test
@@ -50,7 +50,7 @@ class Ex01_FlywayMigrationTest {
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'articles'",
                 Integer.class);
-        assertThat(count).isEqualTo(1);
+        assertThat(count).as("articles table should exist").isEqualTo(1);
     }
 
     @Test
@@ -59,6 +59,6 @@ class Ex01_FlywayMigrationTest {
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'articles' AND column_name = 'category'",
                 Integer.class);
-        assertThat(count).isEqualTo(1);
+        assertThat(count).as("category column should exist").isEqualTo(1);
     }
 }

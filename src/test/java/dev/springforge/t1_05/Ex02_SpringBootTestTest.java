@@ -22,19 +22,19 @@ class Ex02_SpringBootTestTest {
     @Test
     @DisplayName("UserService should be injected by Spring")
     void serviceIsInjected() {
-        assertThat(userService).isNotNull();
+        assertThat(userService).as("UserService should be injected").isNotNull();
     }
 
     @Test
     @DisplayName("formatUsername should lowercase and replace spaces with underscores")
     void formatUsernameTransformsCorrectly() {
-        assertThat(userService.formatUsername("John Doe")).isEqualTo("john_doe");
+        assertThat(userService.formatUsername("John Doe")).as("'John Doe' formatted").isEqualTo("john_doe");
     }
 
     @Test
     @DisplayName("formatUsername should trim whitespace")
     void formatUsernameTrims() {
-        assertThat(userService.formatUsername("  alice  ")).isEqualTo("alice");
+        assertThat(userService.formatUsername("  alice  ")).as("whitespace should be trimmed").isEqualTo("alice");
     }
 
     @Test
@@ -47,7 +47,7 @@ class Ex02_SpringBootTestTest {
     @Test
     @DisplayName("isValidEmail should validate email format")
     void isValidEmailValidates() {
-        assertThat(userService.isValidEmail("user@example.com")).isTrue();
-        assertThat(userService.isValidEmail("not-an-email")).isFalse();
+        assertThat(userService.isValidEmail("user@example.com")).as("valid email format").isTrue();
+        assertThat(userService.isValidEmail("not-an-email")).as("invalid email format").isFalse();
     }
 }

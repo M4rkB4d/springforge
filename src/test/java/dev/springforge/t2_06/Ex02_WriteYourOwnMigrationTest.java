@@ -43,7 +43,7 @@ class Ex02_WriteYourOwnMigrationTest {
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'tags'",
                 Integer.class);
-        assertThat(count).isEqualTo(1);
+        assertThat(count).as("tags table should exist").isEqualTo(1);
     }
 
     @Test
@@ -52,7 +52,7 @@ class Ex02_WriteYourOwnMigrationTest {
         Integer nameColumn = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'tags' AND column_name = 'name'",
                 Integer.class);
-        assertThat(nameColumn).isEqualTo(1);
+        assertThat(nameColumn).as("tags.name column should exist").isEqualTo(1);
     }
 
     @Test
@@ -61,6 +61,6 @@ class Ex02_WriteYourOwnMigrationTest {
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'article_tags'",
                 Integer.class);
-        assertThat(count).isEqualTo(1);
+        assertThat(count).as("article_tags table should exist").isEqualTo(1);
     }
 }

@@ -29,7 +29,7 @@ class Ex03_ConditionalBeansTest {
     @Test
     @DisplayName("Audit bean should exist when app.audit.enabled=true")
     void auditBeanExistsWhenEnabled() {
-        assertThat(auditMessage).isNotNull();
-        assertThat(auditMessage).isEqualTo("Audit logging enabled");
+        assertThat(auditMessage).as("audit bean should exist when enabled").isNotNull();
+        assertThat(auditMessage).as("audit bean message").isEqualTo("Audit logging enabled");
     }
 }
