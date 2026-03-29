@@ -1,6 +1,7 @@
 package dev.springforge.t1_05;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -29,7 +30,7 @@ public class InfoController {
     }
 
     @GetMapping("/info/format")
-    public Map<String, String> formatUsername(String username) {
+    public Map<String, String> formatUsername(@RequestParam String username) {
         String formatted = userService.formatUsername(username);
         return Map.of("formatted", formatted);
     }
