@@ -13,7 +13,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
+/**
+ * EXERCISE 01: Advanced MockMvc Patterns
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * OBJECTIVE: Test CRUD operations using MockMvc with JSON payloads.
+ *
+ * BookController is ALREADY IMPLEMENTED — your job is to write the TESTS.
+ * Study the controller to understand the API contract, then verify each
+ * endpoint returns the correct status code and response body.
+ *
+ * WHAT YOU LEARN:
+ * - POST with JSON body using mockMvc.perform(post(...).content(...))
+ * - Verifying status codes: isCreated(), isNotFound(), isNoContent()
+ * - Extracting response content for chained assertions
+ * - Using jsonPath() to inspect JSON response fields
+ */
+@SpringBootTest(classes = RestTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-03 Ex01: Advanced MockMvc")
 class Ex01_MockMvcAdvancedTest {

@@ -38,12 +38,15 @@ class Ex01_RestClientTest {
         WeatherClient client = new WeatherClient(RestClient.builder(), "http://localhost:8080");
         try {
             client.getWeather("London");
-            // If it doesn't throw, implementation exists — test passes
+            // If no exception, implementation exists and attempted a real call — acceptable
         } catch (UnsupportedOperationException e) {
-            // Expected before implementation
-            assertThat(e.getMessage()).contains("Implement");
-        } catch (Exception e) {
-            // Implementation exists but no server running — still valid
+            // Expected before implementation — stub throws this
+            assertThat(e.getMessage())
+                    .as("Stub should contain implementation hint")
+                    .contains("Implement");
+        } catch (org.springframework.web.client.ResourceAccessException e) {
+            // Implementation exists but no server running — connection refused is expected
+            assertThat(e).as("RestClient tried to connect — implementation exists").isNotNull();
         }
     }
 }

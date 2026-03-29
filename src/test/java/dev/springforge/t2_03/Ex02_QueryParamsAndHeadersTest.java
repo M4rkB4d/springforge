@@ -11,7 +11,24 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
+/**
+ * EXERCISE 02: Query Parameters & Headers
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * OBJECTIVE: Test query parameter filtering and content type headers.
+ *
+ * BookController is ALREADY IMPLEMENTED — your job is to write the TESTS.
+ * This exercise focuses on the search endpoint (GET /api/books/search?author=X)
+ * and verifying response headers.
+ *
+ * WHAT YOU LEARN:
+ * - Sending query parameters with .param("key", "value")
+ * - Asserting JSON array length with jsonPath("$.length()")
+ * - Verifying Content-Type headers with content().contentTypeCompatibleWith()
+ * - Testing empty result sets
+ */
+@SpringBootTest(classes = RestTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-03 Ex02: Query Params & Headers")
 class Ex02_QueryParamsAndHeadersTest {
