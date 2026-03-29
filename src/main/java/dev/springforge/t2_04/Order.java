@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
  * This teaches: entity relationships, fetch types, and join columns.
  */
 @Entity
-// TODO: Add @Table(name = "orders")
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -27,7 +27,7 @@ public class Order {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    // TODO: Add @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
     private String description;

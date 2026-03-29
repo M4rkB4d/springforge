@@ -11,17 +11,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * EXERCISE 02: Query Parameters and Response Headers
- *
- * DIFFICULTY: ★★★☆☆
- *
- * Test the search endpoint and verify response headers.
- *
- * WHAT TO DO:
- * 1. Test GET /api/books/search?author=... returns filtered results
- * 2. Test response Content-Type header is application/json
- */
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("T2-03 Ex02: Query Params & Headers")
@@ -33,26 +22,43 @@ class Ex02_QueryParamsAndHeadersTest {
     @Test
     @DisplayName("GET /api/books/search?author=X filters by author")
     void searchByAuthorFilters() throws Exception {
-        // TODO: Create 2 books (different authors), then search for one author
-        // Assert: only matching books returned
-        // Hint: Use .param("author", "Author Name") in the request builder
-        throw new UnsupportedOperationException("Write the test");
+        // Create two books with different authors
+        mockMvc.perform(post("/api/books")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {"title": "Book A", "author": "Alice Smith", "isbn": "111"}
+                        """));
+
+        mockMvc.perform(post("/api/books")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("""
+                        {"title": "Book B", "author": "Bob Jones", "isbn": "222"}
+                        """));
+
+        mockMvc.perform(get("/api/books/search").param("author", "Alice Smith"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(1))
+                .andExpect(jsonPath("$[0].author").value("Alice Smith"));
     }
 
     @Test
     @DisplayName("POST response has Content-Type application/json")
     void postResponseHasJsonContentType() throws Exception {
-        // TODO: Create a book and verify the Content-Type header
-        // Hint: .andExpect(header().string("Content-Type", ...))
-        //   or .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-        throw new UnsupportedOperationException("Write the test");
+        mockMvc.perform(post("/api/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"title": "Test", "author": "Test", "isbn": "333"}
+                                """))
+                .andExpect(status().isCreated())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
     @DisplayName("GET /api/books/search returns empty list when no match")
     void searchReturnsEmptyWhenNoMatch() throws Exception {
-        // TODO: Search for an author that doesn't exist
-        // Assert: 200 OK with empty JSON array
-        throw new UnsupportedOperationException("Write the test");
+        mockMvc.perform(get("/api/books/search").param("author", "Nonexistent Author"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$.length()").value(0));
     }
 }

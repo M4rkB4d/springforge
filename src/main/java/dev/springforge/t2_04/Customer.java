@@ -17,17 +17,17 @@ import jakarta.persistence.*;
  * and a no-arg constructor.
  */
 @Entity
-// TODO: Add @Table(name = "customers")
+@Table(name = "customers")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Add @Column(nullable = false)
+    @Column(nullable = false)
     private String name;
 
-    // TODO: Add @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     private String phone;
