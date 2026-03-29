@@ -1,19 +1,17 @@
 package dev.springforge.t1_03;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 /**
- * Exercise 1: Simple Greeting Implementation
- *
- * YOUR TASK: Annotate this class with @Service so Spring discovers it.
- * Implement greet() to return "Hello, {name}!"
- *
- * Hint: Add @Service above the class declaration.
+ * Exercise 1: Simple Greeting Implementation — SOLUTION
  */
-// TODO: Add @Service annotation
+@Service
+@Profile("default")
 public class SimpleGreetingService implements GreetingService {
 
     @Override
     public String greet(String name) {
-        // TODO: Return "Hello, {name}!"
-        throw new UnsupportedOperationException("Implement greet()");
+        return "Hello, " + name + "!";
     }
 }

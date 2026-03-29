@@ -1,21 +1,17 @@
 package dev.springforge.t1_03;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 /**
- * Exercise 3: Profiles — Formal greeting for "production" profile.
- *
- * YOUR TASK:
- * 1. Annotate with @Service
- * 2. Annotate with @Profile("formal") so it only activates for that profile
- * 3. Implement greet() to return "Good day, {name}. How may I assist you?"
- *
- * When the "formal" profile is active, THIS bean replaces SimpleGreetingService.
+ * Exercise 3: Profiles — Formal greeting — SOLUTION
  */
-// TODO: Add @Service and @Profile("formal") annotations
+@Service
+@Profile("formal")
 public class FormalGreetingService implements GreetingService {
 
     @Override
     public String greet(String name) {
-        // TODO: Return formal greeting
-        throw new UnsupportedOperationException("Implement greet()");
+        return "Good day, " + name + ". How may I assist you?";
     }
 }
