@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * YOUR TASK: Make NotificationService a @Service with constructor injection.
  */
-@SpringBootTest
+@SpringBootTest(classes = DiTestApp.class)
 @DisplayName("T1-03 Ex02: Constructor Injection")
 class Ex02_ConstructorInjectionTest {
 

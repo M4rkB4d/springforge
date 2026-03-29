@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * YOUR TASK: Make FeatureToggle a @Component with @Value on betaEnabled.
  */
-@SpringBootTest
+@SpringBootTest(classes = ConfigTestApp.class)
 @DisplayName("T1-04 Ex02: @Value Injection")
 class Ex02_ValueInjectionTest {
 

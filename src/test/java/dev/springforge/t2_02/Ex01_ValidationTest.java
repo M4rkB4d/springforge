@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 1. Add @NotBlank to title, @Size(max=500) to description, @Min(1) @Max(10) to priority
  * 2. Add @Valid before @RequestBody in TaskController.createTask()
  */
-@SpringBootTest
+@SpringBootTest(classes = ValidationTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-02 Ex01: Bean Validation")
 class Ex01_ValidationTest {

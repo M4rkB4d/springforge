@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Same exercise, but with the property explicitly set to true.
  * This proves @Value actually reads the property, not just the default.
  */
-@SpringBootTest
+@SpringBootTest(classes = ConfigTestApp.class)
 @TestPropertySource(properties = "app.feature.beta-enabled=true")
 @DisplayName("T1-04 Ex02b: @Value with property set")
 class Ex02_ValueInjectionEnabledTest {

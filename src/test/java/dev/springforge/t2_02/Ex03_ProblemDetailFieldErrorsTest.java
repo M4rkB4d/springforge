@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 3. Add field errors as a property: problemDetail.setProperty("errors", errors)
  *    where errors is a map of field name → error message
  */
-@SpringBootTest
+@SpringBootTest(classes = ValidationTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-02 Ex03: ProblemDetail Field Errors")
 class Ex03_ProblemDetailFieldErrorsTest {

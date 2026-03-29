@@ -7,55 +7,29 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Exercise 2: Streams & Collectors
- *
- * Spring service layers process collections constantly.
- * These patterns will appear in every controller and service you write.
+ * Exercise 2: Streams & Collectors — SOLUTIONS
  */
 public class StreamExercises {
 
-    /**
-     * Filter names that start with the given prefix (case-insensitive).
-     * Return them in their original order.
-     *
-     * Hint: String.startsWith() is case-sensitive, so normalize first.
-     */
     public static List<String> namesStartingWith(List<String> names, String prefix) {
-        // TODO: Use stream().filter().collect()
-        throw new UnsupportedOperationException("Implement namesStartingWith()");
+        return names.stream()
+                .filter(name -> name.toLowerCase().startsWith(prefix.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
-    /**
-     * Convert each string to uppercase, then join with ", ".
-     *
-     * Example: ["spring", "boot"] → "SPRING, BOOT"
-     *
-     * Hint: Use Collectors.joining()
-     */
     public static String joinUpperCased(List<String> items) {
-        // TODO: Use stream().map().collect(Collectors.joining(...))
-        throw new UnsupportedOperationException("Implement joinUpperCased()");
+        return items.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.joining(", "));
     }
 
-    /**
-     * Group names by their first character.
-     *
-     * Example: ["Alice", "Anna", "Bob"] → {'A': ["Alice", "Anna"], 'B': ["Bob"]}
-     *
-     * Hint: Use Collectors.groupingBy()
-     */
     public static Map<Character, List<String>> groupByFirstLetter(List<String> names) {
-        // TODO: Use stream().collect(Collectors.groupingBy(...))
-        throw new UnsupportedOperationException("Implement groupByFirstLetter()");
+        return names.stream()
+                .collect(Collectors.groupingBy(name -> name.charAt(0)));
     }
 
-    /**
-     * Find the longest string in the list. Return Optional.empty() if list is empty.
-     *
-     * Hint: Use stream().max() with Comparator.comparingInt()
-     */
     public static Optional<String> findLongest(List<String> items) {
-        // TODO: Use stream().max(...)
-        throw new UnsupportedOperationException("Implement findLongest()");
+        return items.stream()
+                .max(Comparator.comparingInt(String::length));
     }
 }

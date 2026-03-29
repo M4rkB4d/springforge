@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Same exercise, but proves the bean is ABSENT when condition is false.
  */
-@SpringBootTest
+@SpringBootTest(classes = ConfigTestApp.class)
 @TestPropertySource(properties = "app.audit.enabled=false")
 @DisplayName("T1-04 Ex03b: Conditional Beans (disabled)")
 class Ex03_ConditionalBeansDisabledTest {

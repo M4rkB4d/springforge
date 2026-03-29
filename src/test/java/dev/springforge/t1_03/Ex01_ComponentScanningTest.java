@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * YOUR TASK: Add @Service to SimpleGreetingService and implement greet().
  */
-@SpringBootTest
+@SpringBootTest(classes = DiTestApp.class)
 @DisplayName("T1-03 Ex01: Component Scanning")
 class Ex01_ComponentScanningTest {
 

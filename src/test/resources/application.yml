@@ -4,12 +4,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://login.microsoftonline.com/test-tenant/v2.0
-          jwk-set-uri: https://login.microsoftonline.com/test-tenant/discovery/v2.0/keys
   autoconfigure:
     exclude:
       # MongoDB — requires running server; @DataMongoTest handles its own config
@@ -18,3 +12,9 @@ spring:
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoRepositoriesAutoConfiguration
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoReactiveAutoConfiguration
       - org.springframework.boot.data.mongodb.autoconfigure.DataMongoReactiveRepositoriesAutoConfiguration
+
+# ── T1-04: Configuration Properties exercises ──────────────────────
+app:
+  name: SpringForge
+  version: 1.0.0
+  debug: false

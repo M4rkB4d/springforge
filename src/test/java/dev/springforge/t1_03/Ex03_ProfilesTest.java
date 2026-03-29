@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * YOUR TASK: Add @Service and @Profile("formal") to FormalGreetingService,
  * and add @Profile("default") to SimpleGreetingService so they don't conflict.
  */
-@SpringBootTest
+@SpringBootTest(classes = DiTestApp.class)
 @ActiveProfiles("formal")
 @DisplayName("T1-03 Ex03: Profiles")
 class Ex03_ProfilesTest {

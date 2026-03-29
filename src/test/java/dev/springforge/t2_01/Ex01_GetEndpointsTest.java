@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 3. Implement GET /api/products (list all)
  * 4. Implement GET /api/products/{id} (get one, return 404 if not found)
  */
-@SpringBootTest
+@SpringBootTest(classes = RestTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-01 Ex01: GET Endpoints")
 class Ex01_GetEndpointsTest {

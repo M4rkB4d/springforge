@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *    to your main application class
  * 3. Add app.name, app.version, app.debug to application.yml
  */
-@SpringBootTest
+@SpringBootTest(classes = ConfigTestApp.class)
 @DisplayName("T1-04 Ex01: Configuration Properties")
 class Ex01_ConfigurationPropertiesTest {
 

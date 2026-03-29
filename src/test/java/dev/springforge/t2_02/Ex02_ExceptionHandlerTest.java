@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 2. Handle TaskNotFoundException → 404 with ProblemDetail
  * 3. Handle MethodArgumentNotValidException → 400 with ProblemDetail
  */
-@SpringBootTest
+@SpringBootTest(classes = ValidationTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-02 Ex02: Exception Handler")
 class Ex02_ExceptionHandlerTest {

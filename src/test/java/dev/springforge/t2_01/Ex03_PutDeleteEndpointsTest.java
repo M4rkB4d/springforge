@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 2. DELETE /api/products/{id} — delete product, return 204 No Content
  *    Return 404 if the product doesn't exist
  */
-@SpringBootTest
+@SpringBootTest(classes = RestTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-01 Ex03: PUT & DELETE Endpoints")
 class Ex03_PutDeleteEndpointsTest {

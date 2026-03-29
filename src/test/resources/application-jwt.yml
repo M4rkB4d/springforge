@@ -1,0 +1,7 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/test-tenant/v2.0
+          jwk-set-uri: https://login.microsoftonline.com/test-tenant/discovery/v2.0/keys

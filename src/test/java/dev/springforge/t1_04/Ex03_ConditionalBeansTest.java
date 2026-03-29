@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * YOUR TASK: Add @Bean + @ConditionalOnProperty to ConditionalBeanConfig.
  */
-@SpringBootTest
+@SpringBootTest(classes = ConfigTestApp.class)
 @TestPropertySource(properties = "app.audit.enabled=true")
 @DisplayName("T1-04 Ex03: Conditional Beans (enabled)")
 class Ex03_ConditionalBeansTest {

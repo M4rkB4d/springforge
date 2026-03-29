@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * 2. Save the product using the repository
  * 3. Return 201 Created with the saved product in the response body
  */
-@SpringBootTest
+@SpringBootTest(classes = RestTestApp.class)
 @AutoConfigureMockMvc
 @DisplayName("T2-01 Ex02: POST Endpoint")
 class Ex02_PostEndpointTest {
