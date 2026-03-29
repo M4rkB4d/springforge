@@ -37,6 +37,8 @@ See `Ex01_DualStoreSetupTest.java` — demonstrates both stores active.
 ```
 
 ### Exercise 3: Mongock Migration
+> ⚠️ **Currently disabled.** Mongock 5.5.0 (`mongock-springboot-v3`) is incompatible with Spring Boot 4.0 / Spring Data 5.x. The test is `@Disabled` and changeset annotations are commented out. The exercise code and concepts are preserved — re-enable when Mongock ships a Boot 4.0 artifact.
+
 **File to edit:** `InitialDataChangeset.java` — Implement the migration
 
 ```bash

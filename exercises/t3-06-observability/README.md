@@ -58,7 +58,9 @@ management:
   endpoint:
     health:
       show-details: when_authorized
-      probes.enabled: true  # enables /actuator/health/liveness + /readiness
+  health:
+    probes:
+      enabled: true  # enables /actuator/health/liveness + /readiness
 
 # HikariCP for Azure SQL
 spring:
