@@ -1,8 +1,9 @@
 package dev.springforge.t3_03;
 
-import io.mongock.api.annotations.ChangeUnit;
-import io.mongock.api.annotations.Execution;
-import io.mongock.api.annotations.RollbackExecution;
+// Mongock imports — commented out until Boot 4.0 compatible artifact ships
+// import io.mongock.api.annotations.ChangeUnit;
+// import io.mongock.api.annotations.Execution;
+// import io.mongock.api.annotations.RollbackExecution;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 /**
@@ -27,19 +28,21 @@ import org.springframework.data.mongodb.core.MongoTemplate;
  *
  * NOTE: In Mongock v5, @ChangeUnit replaces the deprecated
  * @ChangeLog/@ChangeSet from v4. Always use @ChangeUnit for new code.
+ *
+ * STATUS: DISABLED — Mongock 5.5.0 (mongock-springboot-v3) is incompatible with
+ * Spring Boot 4.0 / Spring Data 5.x. Re-enable when Mongock ships a Boot 4 artifact.
+ * Uncomment the annotations below and the imports above when ready.
  */
-@ChangeUnit(id = "001-initial-audit-log", order = "001", author = "springforge")
+// @ChangeUnit(id = "001-initial-audit-log", order = "001", author = "springforge")
 public class InitialDataChangeset {
 
-    @Execution
+    // @Execution
     public void execute(MongoTemplate mongoTemplate) {
         // TODO: Create and save an initial AuditLog document
-        throw new UnsupportedOperationException("Implement the Mongock migration");
     }
 
-    @RollbackExecution
+    // @RollbackExecution
     public void rollback(MongoTemplate mongoTemplate) {
         // TODO: Remove the initial AuditLog document
-        throw new UnsupportedOperationException("Implement the rollback");
     }
 }
