@@ -43,14 +43,17 @@ cat exercises/t1-02-first-app/README.md
 
 ## Choose Your Track
 
-| Track | You Are | Start Here | Modules | Hours |
-|-------|---------|------------|---------|-------|
-| **Junior** | Java developer, new to Spring | T1-01 | 22 | 70-90h |
-| **Migrating** | Spring Boot 2.x/3.x developer | MG-01 | 16 | 25-35h |
-| **React Crossover** | Frontend developer learning backend | RX-01 | 22 | 80-110h |
-| **Enterprise** | Team upskilling together | T1-02 | 31 | 90-130h |
+| Track | You Are | Start Here | Modules | Hours | Status |
+|-------|---------|------------|---------|-------|--------|
+| **Junior** | Java developer, new to Spring | T1-01 | 19 | 70-90h | ✅ Available (16 built, 3 planned) |
+| **Enterprise** | Team upskilling together | T1-02 | 28 | 90-130h | ✅ Available (18 built, 10 planned) |
+| **Migrating** | Spring Boot 2.x/3.x developer | MG-01 | 15 | 25-35h | 🔜 Coming Soon |
+| **React Crossover** | Frontend developer learning backend | RX-01 | 18 | 80-110h | 🔜 Coming Soon |
 
-See [TRACKS.md](TRACKS.md) for the full module sequence for each track.
+> **Note:** Migrating and React Crossover tracks depend on modules not yet built (MG-01–03, RX-01–02).
+> Junior and Enterprise tracks are fully usable today through Tier 3.
+
+See [TRACKS.md](TRACKS.md) for the full module sequence and prerequisites for each track.
 
 ## Project Structure
 
