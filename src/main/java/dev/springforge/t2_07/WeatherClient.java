@@ -23,13 +23,15 @@ import org.springframework.web.client.RestClient;
 // TODO: Add @Service
 public class WeatherClient {
 
-    // TODO: Add a final RestClient field
-    // TODO: Constructor accepting RestClient.Builder and String baseUrl
+    // TODO: Add a final RestClient field built from the builder below
 
+    private final RestClient.Builder builder;
     private final String baseUrl;
 
-    public WeatherClient(String baseUrl) {
+    public WeatherClient(RestClient.Builder builder, String baseUrl) {
+        this.builder = builder;
         this.baseUrl = baseUrl;
+        // TODO: Build the RestClient: this.restClient = builder.baseUrl(baseUrl).build();
     }
 
     public WeatherResponse getWeather(String city) {
