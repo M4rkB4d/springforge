@@ -10,7 +10,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Exercise 2: Testing with @SpringBootTest — SOLUTION
+ * EXERCISE 02: Testing with @SpringBootTest
+ *
+ * DIFFICULTY: ★★☆☆☆
+ *
+ * OBJECTIVE: Use @SpringBootTest to load the full application context
+ * and test Spring-managed beans with real dependency injection.
+ *
+ * YOUR TASK: Fill in the assertions for each test method.
+ * Look at the UserService implementation to know what to expect.
+ *
+ * WHAT YOU LEARN:
+ * - @SpringBootTest loads the full Spring context
+ * - @Autowired injects real beans into your test
+ * - assertThat() for value assertions
+ * - assertThatThrownBy() for exception assertions
  */
 @SpringBootTest(classes = TestingTestApp.class)
 @DisplayName("T1-05 Ex02: @SpringBootTest")

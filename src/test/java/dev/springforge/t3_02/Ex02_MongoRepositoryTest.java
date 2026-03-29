@@ -15,10 +15,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * EXERCISE 02: MongoRepository Queries
  *
- * These tests verify the derived query methods and @Query work correctly.
- * Complete the Product @Document annotations first (Ex01), then run these.
+ * DIFFICULTY: ★★★☆☆
  *
- * REQUIRES: Docker running
+ * OBJECTIVE: Add derived query methods and @Query to ProductRepository.
+ *
+ * YOUR TASKS:
+ * 1. Add findByCategory(String category) — Spring Data derives the query
+ * 2. Add findByPriceGreaterThan(BigDecimal price) — derived price filter
+ * 3. Add searchByName(@Query) — custom MongoDB query with regex
+ * 4. Add findByCategoryOrderByPriceAsc() — sorted results
+ * 5. Add countByCategory() — aggregation count
+ *
+ * WHAT YOU LEARN:
+ * - Derived query methods (Spring generates the query from method name)
+ * - @Query for custom MongoDB queries
+ * - Method naming conventions → query generation rules
+ *
+ * PREREQ: Complete Ex01 (Product @Document) first. REQUIRES: Docker running.
  */
 @DataMongoTest(properties = "spring.autoconfigure.exclude=")
 @Import(MongoTestcontainersConfig.class)

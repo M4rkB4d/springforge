@@ -13,7 +13,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * Exercise 3: Testing with @WebMvcTest + MockMvc — SOLUTION
+ * EXERCISE 03: Testing with @WebMvcTest + MockMvc
+ *
+ * DIFFICULTY: ★★★☆☆
+ *
+ * OBJECTIVE: Test the web layer in isolation using @WebMvcTest.
+ * Only the controller and its dependencies are loaded — no database,
+ * no full context. Dependencies are mocked with @MockitoBean.
+ *
+ * YOUR TASK: Write MockMvc test methods for the InfoController.
+ *
+ * WHAT YOU LEARN:
+ * - @WebMvcTest loads ONLY the web layer (fast!)
+ * - @MockitoBean replaces real beans with Mockito mocks
+ * - MockMvc simulates HTTP requests without a real server
+ * - given().willReturn() sets up mock behavior (BDD style)
  */
 @WebMvcTest(InfoController.class)
 @DisplayName("T1-05 Ex03: @WebMvcTest + MockMvc")
