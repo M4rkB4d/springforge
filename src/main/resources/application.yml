@@ -21,7 +21,7 @@ spring:
   # Disable security auto-config by default (modules enable as needed)
   autoconfigure:
     exclude:
-      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.security.autoconfigure.SecurityAutoConfiguration
 
 # ── T1-04: Configuration Properties exercises ──────────────────────
 app:
