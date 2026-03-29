@@ -1,61 +1,54 @@
 package dev.springforge.t2_01;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * Exercise: Product CRUD Controller
- *
- * Build a full REST controller for managing products.
- *
- * YOUR TASKS:
- *
- * Ex01 — GET endpoints (list all + get by ID)
- *   1. Annotate class with @RestController and @RequestMapping("/api/products")
- *   2. Inject ProductRepository via constructor
- *   3. GET /api/products → return all products (200 OK with List<Product>)
- *   4. GET /api/products/{id} → return one product or 404
- *      Hint: Use ResponseEntity.ok() and ResponseEntity.notFound().build()
- *
- * Ex02 — POST endpoint (create)
- *   5. POST /api/products → accept CreateProductRequest as @RequestBody
- *   6. Save it, return 201 Created with the saved product
- *      Hint: Use ResponseEntity.status(HttpStatus.CREATED).body(saved)
- *      Or: ResponseEntity.created(URI).body(saved)
- *
- * Ex03 — PUT and DELETE endpoints (update + delete)
- *   7. PUT /api/products/{id} → accept CreateProductRequest, update existing product
- *      Return 200 with updated product, or 404 if not found
- *   8. DELETE /api/products/{id} → delete product
- *      Return 204 No Content if found, 404 if not found
- *      Hint: Use ResponseEntity.noContent().build()
- */
-// TODO: Add @RestController and @RequestMapping("/api/products")
+@RestController
+@RequestMapping("/api/products")
 public class ProductController {
 
-    // TODO: Inject ProductRepository via constructor
+    private final ProductRepository repository;
 
-    // TODO: Ex01 — GET /api/products (list all)
+    public ProductController(ProductRepository repository) {
+        this.repository = repository;
+    }
+
+    @GetMapping
     public ResponseEntity<?> getAllProducts() {
-        throw new UnsupportedOperationException("Implement getAllProducts()");
+        return ResponseEntity.ok(repository.findAll());
     }
 
-    // TODO: Ex01 — GET /api/products/{id} (get one)
-    public ResponseEntity<?> getProduct(Long id) {
-        throw new UnsupportedOperationException("Implement getProduct()");
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProduct(@PathVariable Long id) {
+        return repository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    // TODO: Ex02 — POST /api/products (create)
-    public ResponseEntity<?> createProduct(CreateProductRequest request) {
-        throw new UnsupportedOperationException("Implement createProduct()");
+    @PostMapping
+    public ResponseEntity<?> createProduct(@RequestBody CreateProductRequest request) {
+        Product product = new Product(null, request.name(), request.description(), request.price());
+        Product saved = repository.save(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
-    // TODO: Ex03 — PUT /api/products/{id} (update)
-    public ResponseEntity<?> updateProduct(Long id, CreateProductRequest request) {
-        throw new UnsupportedOperationException("Implement updateProduct()");
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody CreateProductRequest request) {
+        if (!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        Product updated = new Product(id, request.name(), request.description(), request.price());
+        Product saved = repository.save(updated);
+        return ResponseEntity.ok(saved);
     }
 
-    // TODO: Ex03 — DELETE /api/products/{id} (delete)
-    public ResponseEntity<?> deleteProduct(Long id) {
-        throw new UnsupportedOperationException("Implement deleteProduct()");
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        if (!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -44,31 +44,34 @@ class Ex02_WriteYourOwnContainerTestTest {
     @Test
     @DisplayName("findByTitleContainingIgnoreCase finds articles with 'jpa' in title")
     void searchByTitleKeyword() {
-        // TODO: Call articleRepository.findByTitleContainingIgnoreCase("jpa")
-        // Assert: 3 articles match (JPA Basics, Advanced JPA, JPA Performance)
-        throw new UnsupportedOperationException("Write the test");
+        List<Article> results = articleRepository.findByTitleContainingIgnoreCase("jpa");
+        assertThat(results).hasSize(3);
+        assertThat(results).extracting(Article::getTitle)
+                .containsExactlyInAnyOrder("JPA Basics", "Advanced JPA", "JPA Performance");
     }
 
     @Test
     @DisplayName("Updating an article persists changes to PostgreSQL")
     void updateArticlePersists() {
-        // TODO:
-        // 1. Find all articles, get the first one
-        // 2. Change its title to "Updated Title"
-        // 3. Save it back
-        // 4. Read it fresh from the DB using findById
-        // 5. Assert the title was updated
-        throw new UnsupportedOperationException("Write the test");
+        Article first = articleRepository.findAll().getFirst();
+        first.setTitle("Updated Title");
+        articleRepository.save(first);
+
+        Optional<Article> found = articleRepository.findById(first.getId());
+        assertThat(found).isPresent();
+        assertThat(found.get().getTitle()).isEqualTo("Updated Title");
     }
 
     @Test
     @DisplayName("Deleting an article removes it from PostgreSQL")
     void deleteArticleRemoves() {
-        // TODO:
-        // 1. Count articles (should be 4)
-        // 2. Delete the first one
-        // 3. Count again (should be 3)
-        // 4. Assert findById returns empty for the deleted ID
-        throw new UnsupportedOperationException("Write the test");
+        assertThat(articleRepository.count()).isEqualTo(4);
+
+        Article first = articleRepository.findAll().getFirst();
+        Long deletedId = first.getId();
+        articleRepository.delete(first);
+
+        assertThat(articleRepository.count()).isEqualTo(3);
+        assertThat(articleRepository.findById(deletedId)).isEmpty();
     }
 }

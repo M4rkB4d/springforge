@@ -1,21 +1,10 @@
 package dev.springforge.t2_02;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-/**
- * Exercise 1 & 2: Task Controller with Validation
- *
- * YOUR TASKS:
- *
- * Ex01 — Add @Valid to the request body parameter in createTask().
- *   Without @Valid, Spring ignores your validation annotations.
- *   With @Valid, Spring returns 400 Bad Request automatically on violations.
- *
- * Ex02 — The getTask() method throws TaskNotFoundException.
- *   You'll handle this in GlobalExceptionHandler (Ex02).
- */
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -26,9 +15,8 @@ public class TaskController {
         this.repository = repository;
     }
 
-    // TODO: Ex01 — Add @Valid before @RequestBody
     @PostMapping
-    public ResponseEntity<Task> createTask(@RequestBody CreateTaskRequest request) {
+    public ResponseEntity<Task> createTask(@Valid @RequestBody CreateTaskRequest request) {
         Task task = new Task(null, request.title(), request.description(), request.priority());
         Task saved = repository.save(task);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
